@@ -1,7 +1,11 @@
 package Unidad_0;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ingresoDatos {
+
     public static void main(String[] args) {
         int N= 10;
         int M = 12;
@@ -13,8 +17,6 @@ public class ingresoDatos {
         System.out.println(N +A);
         System.out.println(A-N);
         System.out.println(Character.getNumericValue(C));
-        if(M<N || N<M){
-
         }
     }
-}
+
