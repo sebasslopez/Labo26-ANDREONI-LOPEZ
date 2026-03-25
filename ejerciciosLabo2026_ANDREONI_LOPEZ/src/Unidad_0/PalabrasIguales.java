@@ -9,7 +9,7 @@ public class PalabrasIguales {
         Scanner s = new Scanner(System.in);
         String pal = s.next();
         System.out.println("ingresar palabra2");
-        Scanner s = new Scanner(System.in);
+        Scanner e = new Scanner(System.in);
         String palb = s.next();
         while(pal.length()==palb.length()){
             System.out.println("son iguales");

@@ -8,6 +8,7 @@ public class IntroducirNumeros {
         int numero = s.nextInt();
         int numMayor=0;
         int numMenor=0;
+        int sumam=0;
         int suma=0;
         int contador = 0;
         while ( numero != -1){
@@ -25,5 +26,6 @@ public class IntroducirNumeros {
 
         }
         System.out.println(contador);
+
     }
 }
