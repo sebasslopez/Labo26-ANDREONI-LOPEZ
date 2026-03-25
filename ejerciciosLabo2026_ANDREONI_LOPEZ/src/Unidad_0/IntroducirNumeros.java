@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class IntroducirNumeros {
     public static void main(String[] args) {
+
         Scanner s = new Scanner(System.in);
         int numero = s.nextInt();
         int numMayor=0;
