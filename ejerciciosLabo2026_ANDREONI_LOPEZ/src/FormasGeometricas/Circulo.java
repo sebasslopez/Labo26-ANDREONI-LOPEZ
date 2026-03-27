@@ -18,12 +18,12 @@ public class Circulo {
         this.radio = radio;
     }
 
-    public double Area() {
-        return Math.PI * radio * radio;
+    public double area() {
+        return Math.PI * (radio * radio);
     }
 
 
-    public double Perimetro() {
+    public double perimetro() {
         return 2 * Math.PI * radio;
     }
 
@@ -32,7 +32,7 @@ public class Circulo {
     Circulo c1 = new Circulo();
     Circulo c2 = new Circulo(5);
 
-        System.out.println(" area del circulo 1"+ c1.Area());
-        System.out.println("perimetro del circulo 2"+ c2.Perimetro());
+        System.out.println(" area del circulo 1"+ c1.area());
+        System.out.println("perimetro del circulo 2"+ c2.perimetro());
     }
 }

@@ -22,18 +22,18 @@ public class Rectangulo {
         this.altura=altura;
     }
 
-    public float Areap(){
+    public float areap(){
         return base * altura;
     }
 
-    public float Perimetro(){
-        return 2*(base+altura);
+    public float perimetro(){
+        return ((2*base)+(2*altura));
     }
 
     public static void main(String[] args) {
         Rectangulo rec1 = new Rectangulo(5,9);
         Rectangulo rec2 = new Rectangulo(8,3);
-        System.out.println("area rec 1:"+ rec1.Areap());
-        System.out.println("perimetro rec 2:"+ rec2.Perimetro());
+        System.out.println("area rec 1:"+ rec1.areap());
+        System.out.println("perimetro rec 2:"+ rec2.perimetro());
     }
 }
