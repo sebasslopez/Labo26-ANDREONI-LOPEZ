@@ -1,3 +1,5 @@
+package Unidad0;
+
 public class NumeroMayor {
     public static void main(String[] args) {
         int N= 10;
