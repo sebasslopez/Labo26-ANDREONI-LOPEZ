@@ -1,4 +1,4 @@
-package Unidad_0;
+package UN0;
 
 public class MontañaRusa
 {

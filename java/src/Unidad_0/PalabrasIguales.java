@@ -1,4 +1,4 @@
-package Unidad_0;
+package UN0;
 
 import java.util.Scanner;
 
@@ -12,7 +12,8 @@ public class PalabrasIguales {
         System.out.println("ingresar palabra 2");
         Scanner e = new Scanner(System.in);
         String palb = s.next();
-        while(pal.length()==palb.length()){
+
+        while(pal.equals(palb)){
             System.out.println("son iguales");
         }
     }
