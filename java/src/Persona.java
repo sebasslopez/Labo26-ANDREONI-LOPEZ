@@ -40,7 +40,7 @@ public class Persona {
     }
 
     public static void main(String[] args) {
-        Persona persona =new Persona("Raquel",10,"Constituyentes 5848");
+        Persona persona = new Persona("Raquel",10,"Constituyentes 5848");
         System.out.println(persona.datos());
 
     }
