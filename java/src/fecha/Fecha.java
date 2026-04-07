@@ -1,5 +1,7 @@
+package fecha;
+
 import java.time.LocalDate;
-import java.time.DayOfWeek;
+
 public class Fecha {
     private int dia;
     private int mes;
@@ -66,17 +68,24 @@ public class Fecha {
             }
         }
     }
-    public boolean igualQue(LocalDate fecha){
-        return fecha.equals(LocalDate.of(anio,mes,dia));
+    public boolean igualQue(Fecha fecha){
+        LocalDate f = LocalDate.of(fecha.dia,fecha.mes,fecha.anio);
+        return f.equals(LocalDate.of(anio,mes,dia));
     }
-    public boolean menorQue(LocalDate fecha){
-        return fecha.isBefore(LocalDate.of(anio,mes,dia));
+    public boolean menorQue(Fecha fecha){
+        LocalDate f = LocalDate.of(fecha.dia,fecha.mes,fecha.anio);
+        return f.isBefore(LocalDate.of(anio,mes,dia));
     }
-    public boolean mayorQue(LocalDate fecha){
-        return fecha.isAfter(LocalDate.of(anio,mes,dia));
+    public boolean mayorQue(Fecha fecha){
+        LocalDate f = LocalDate.of(fecha.dia,fecha.mes,fecha.anio);
+        return f.isAfter(LocalDate.of(anio,mes,dia));
     }
     public int diaMes(int mes){
         int[] diasM = {31,28,31,30,31,30,31,31,30,31,30,31};
         return diasM[mes-1];
+    }
+
+    public static void main(String[] args) {
+
     }
 }

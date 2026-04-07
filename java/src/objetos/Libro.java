@@ -1,3 +1,8 @@
+package objetos;
+
+import fecha.Fecha;
+import gente.Persona;
+
 public class Libro {
     private String titulo;
     private Persona autor;
@@ -6,7 +11,7 @@ public class Libro {
     private String editorial;
     private Fecha fecha;
 
-    public Libro(String titulo,Persona autor,int isbn,int paginas,String editorial,Fecha fecha){
+    public Libro(String titulo, Persona autor, int isbn, int paginas, String editorial, Fecha fecha){
         this.titulo = titulo;
         this.autor = autor;
         this.isbn = isbn;
@@ -14,7 +19,7 @@ public class Libro {
         this.editorial = editorial;
         this.fecha = fecha;
     }
-    public Libro(String titulo,Persona autor,int isbn,String editorial,Fecha fecha){
+    public Libro(String titulo, Persona autor, int isbn, String editorial, Fecha fecha){
         this.titulo = titulo;
         this.autor = autor;
         this.isbn = isbn;
@@ -22,7 +27,7 @@ public class Libro {
         this.editorial = editorial;
         this.fecha = fecha;
     }
-    public Libro(String titulo,Persona autor,String editorial,Fecha fecha){
+    public Libro(String titulo, Persona autor, String editorial, Fecha fecha){
         this.titulo = titulo;
         this.autor = autor;
         this.isbn = -1;
@@ -66,6 +71,17 @@ public class Libro {
     public Fecha getFecha(){
         return fecha;
     }
+    public void mostrarLibroCorto(){
+        System.out.printf("Titulo: "+titulo+" Autor: "+autor+"paginas: "+paginas+" editorial: "+editorial);
+    }
+    public void mostrarLibroLargo(){
+        System.out.printf("Titulo: "+titulo+" Autor: "+autor+" isbn: "+ isbn+" paginas: "+paginas+" editorial: "+editorial+" fecha.Fecha: "+fecha);
+    }
+    public boolean esAnterior(Libro otroLibro){
+        return this.fecha.menorQue(otroLibro.fecha);
+    }
 
+    public static void main(String[] args) {
 
+    }
 }
