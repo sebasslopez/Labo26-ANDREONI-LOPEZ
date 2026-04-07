@@ -5,6 +5,7 @@ public class Circulo {
 
 
     public Circulo(){
+
         this.radio = 2;
     }
     public Circulo(float radio) {
