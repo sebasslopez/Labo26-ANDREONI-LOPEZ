@@ -6,11 +6,11 @@ public class Coche {
     private String color;
     private int velocidad;
 
-    public Coche (String marca,String modelo,String color, int velocidad){
+    public Coche (String marca,String modelo,String color){
         this.marca=marca;
         this.modelo=modelo;
         this.color=color;
-        this.velocidad=velocidad;
+        this.velocidad=0;
     }
 
     public String getMarca(){
@@ -69,9 +69,9 @@ public class Coche {
    }
 
     public static void main(String[] args) {
-        Coche coche= new Coche("Audi","R8","Blanco",120);
-        Coche coche2= new Coche("Audi","TT","negro",60);
-        Coche coche3= new Coche("Audi","A1","gris",80);
+        Coche coche= new Coche("Audi","R8","Blanco");
+        Coche coche2= new Coche("Audi","TT","negro");
+        Coche coche3= new Coche("Audi","A1","gris");
         System.out.println(coche.vel());
 
     }
