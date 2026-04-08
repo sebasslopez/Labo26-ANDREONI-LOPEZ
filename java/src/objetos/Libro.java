@@ -71,6 +71,7 @@ public class Libro {
     public Fecha getFecha(){
         return fecha;
     }
+    
     public void mostrarLibroCorto(){
         System.out.printf("Titulo: "+titulo+" Autor: "+autor+"paginas: "+paginas+" editorial: "+editorial);
     }

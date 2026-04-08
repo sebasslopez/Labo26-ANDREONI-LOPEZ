@@ -14,7 +14,7 @@ public class Main{
         tecnico1.activarp(3);
         tecnico2.activarp(6);
 
-        int tiempo = orion.tiempoViaje(600000,56000); // distancia en km
+        int tiempo = orion.tiempoViaje(600000); // distancia en km
         System.out.println("Tiempo de viaje Orión V: " + tiempo + " horas");
 
         boolean cambio1 = tecnico1.cambioC(cosmos);

@@ -47,20 +47,23 @@ public class CohereM {
     public void setPropulsores(int propulsores) {
         this.propulsores = propulsores;
     }
+
+
     public boolean vuelaono(){
         return propulsores >= 2 && velmax>25000;
     }
-    public void activar(int cant){
-        if(cant>propulsores){
+
+    public void activar(int cant) {
+        if (cant > propulsores) {
             System.out.println("no podes activar mas propulsores de los que tenes");
-        }
+        }else if (vuelaono()){
             for (int i = 0; i < cant; i++) {
                 System.out.println("Propulsor " + i + " activado");
             }
         }
+    }
 
-
-    public int tiempoViaje(int distancia,int velmax){
+    public int tiempoViaje(int distancia){
         if(distancia <=0){
             return -1;
         }   else{

@@ -63,6 +63,7 @@ public class Tecnicos {
     }
 
     public boolean cambioC (CohereM nuevoCohete){
+
         if(estaCap(nuevoCohete)){
             this.coheteasig=nuevoCohete;
             return true;
