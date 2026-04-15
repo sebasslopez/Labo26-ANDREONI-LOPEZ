@@ -1,5 +1,6 @@
 package gente;
 
+import colegio.Materia;
 import fecha.Fecha;
 
 import java.util.ArrayList;
@@ -51,8 +52,8 @@ public class Alumno {
         this.apellido = apellido;
     }
 
-    public ArrayList<String> getMaterias() {
-        return materias;
+    public ArrayList<Materia> getMaterias() {
+        return this.materias;
     }
 
     public void setMaterias(ArrayList<Materia> materias) {
@@ -71,5 +72,8 @@ public class Alumno {
         if(nota > notas.get(posicion)){
             return true;
         }else return false;
+    }
+    public void agregarMateria(Materia m){
+        if(!materias.contains(m)) this.materias.add(m);
     }
 }
