@@ -1,6 +1,6 @@
-package colegio;
+package Colegio;
 
-import gente.Alumno;
+import Gente.Alumno;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -58,5 +58,20 @@ public class Materia {
             }
         }
         return total/contador;
+    }
+    public void agregarAlumno(Alumno a){
+        if(alumnos.contains(a)) return;
+        this.alumnos.add(a);
+        ArrayList<Materia> m = a.getMaterias();
+        m.add(this);
+        a.setMaterias(m);
+    }
+    public void anadirContenido(String contenido){
+        this.contenidos.add(contenido);
+    }
+    public void listarAlumnos(){
+        for(Alumno a : alumnos){
+            System.out.println("Nombre: "+a.getNombre()+"Apellido: "+a.getApellido());
+        }
     }
 }

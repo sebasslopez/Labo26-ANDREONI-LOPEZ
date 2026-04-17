@@ -1,7 +1,7 @@
-package gente;
+package Gente;
 
-import colegio.Materia;
-import fecha.Fecha;
+import Colegio.Materia;
+import Utils.Fecha;
 
 import java.util.ArrayList;
 

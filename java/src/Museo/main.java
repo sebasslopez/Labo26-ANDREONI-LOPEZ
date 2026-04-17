@@ -1,6 +1,5 @@
-package museo;
-import gente.Restaurador;
-import decoracion.Cuadro;
+package Museo;
+
 public class main {
     public static void main(String[] args) {
 

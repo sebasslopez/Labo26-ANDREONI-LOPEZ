@@ -1,7 +1,7 @@
-package gente;
+package Gente;
 
-import decoracion.Cuadro;
-import fecha.Fecha;
+import Decoracion.Cuadro;
+import Utils.Fecha;
 
 public class Restaurador {
     private String nombre;

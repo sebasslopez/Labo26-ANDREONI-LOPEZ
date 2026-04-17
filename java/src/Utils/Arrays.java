@@ -1,4 +1,6 @@
-import gente.Persona;
+package Utils;
+
+import Gente.Persona;
 
 import java.util.ArrayList;
 

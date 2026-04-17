@@ -1,8 +1,4 @@
-package gente;
-
-import fecha.Fecha;
-
-import java.util.ArrayList;
+package Gente;
 
 public class Persona {
     private String nombre;

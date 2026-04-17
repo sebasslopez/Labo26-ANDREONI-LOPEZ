@@ -1,4 +1,4 @@
-package electrodomesticos;
+package Electrodomesticos;
 
 public class Cafetera {
     private int maxima;

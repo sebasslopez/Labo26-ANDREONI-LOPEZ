@@ -1,6 +1,6 @@
-package decoracion;
+package Decoracion;
 
-import gente.Persona;
+import Gente.Persona;
 
 public class Cuadro {
     String titulo;
