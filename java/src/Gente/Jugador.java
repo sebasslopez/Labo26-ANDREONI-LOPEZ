@@ -9,39 +9,17 @@ public class Jugador {
     private int numCamiseta;
     private boolean capitan;
 
-    public Jugador(String n,String a,Fecha f,int camiseta,boolean b){
-        this.nombre = n;
-        this.apellido = a;
-        this.fechaNac = f;
-        this.numCamiseta = camiseta;
-        this.capitan = b;
+    public Jugador(String nombre, String apellido, Fecha fechaNacimiento, int numeroCamiseta, boolean esCapitan) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.fechaNac = fechaNacimiento;
+        this.numCamiseta = numeroCamiseta;
+        this.capitan = esCapitan;
     }
-    public Jugador(){
-        this.nombre = "Lionel Andres";
-        this.apellido = "Messi";
-        this.fechaNac = new Fecha(24,6,1987);
-        this.numCamiseta = 10;
-        this.capitan = false;
-    }
-    public String getNombre(){
-        return this.nombre;
-    }
-    public String getApellido(){
-        return this.apellido;
-    }
-    public Fecha getFechaNac(){
-        return this.fechaNac;
-    }
-    public int numCamiseta(){
-        return this.numCamiseta;
-    }
-    public boolean esCapitan(){
-        return this.capitan;
-    }
-    public void setCapitan(boolean capitan) {
-        this.capitan = capitan;
-    }
-    public void setNumCamiseta(int num){
-        this.numCamiseta = num;
-    }
+
+    public String getNombre() { return nombre; }
+    public String getApellido() { return apellido; }
+    public Fecha getFechaNacimiento() { return fechaNac; }
+    public int getNumCamiseta() { return numCamiseta; }
+    public boolean isEsCapitan() { return capitan; }
 }

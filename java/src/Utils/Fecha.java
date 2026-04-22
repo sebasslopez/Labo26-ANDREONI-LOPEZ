@@ -7,10 +7,10 @@ public class Fecha {
     private int mes;
     private int anio;
 
-    public Fecha(int dia,int mes,int papoi){
+    public Fecha(int dia,int mes,int anio){
         this.dia = dia;
         this.mes = mes;
-        this.anio = papoi;
+        this.anio = anio;
         valida();
     }
     public Fecha(){

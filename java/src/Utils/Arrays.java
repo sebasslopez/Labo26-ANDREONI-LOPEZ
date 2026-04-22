@@ -60,9 +60,6 @@ public class Arrays {
             if(pe.getEdad()>30){
                 System.out.println(pe);
             }
-
-
-
         }
     }
 }
