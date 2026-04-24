@@ -1,7 +1,6 @@
 package Deporte;
 
 public class Partido {
-
     private Equipo equipoLocal;
     private Equipo equipoVisitante;
     private int dia;
@@ -18,5 +17,7 @@ public class Partido {
     public Equipo getEquipoVisitante() { return equipoVisitante; }
     public int getDia() { return dia; }
     public String getTurno() { return turno; }
-
+    public String mostrarPartido(){
+        return "Equipo Local: "+equipoLocal.getNombre()+", Equipo Visitante: "+equipoVisitante.getNombre()+", Dia: "+dia+", Turno: "+turno;
+    }
 }
