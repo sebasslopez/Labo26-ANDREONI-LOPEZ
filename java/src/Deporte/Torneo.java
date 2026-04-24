@@ -19,64 +19,58 @@ public class Torneo {
         public ArrayList<Equipo> getEquipos() {
             return equipos;
         }
+        public boolean yaHayPArtidoConEsosEquipos(Equipo e1,Equipo e2){
+            for(Partido p:fixture){
+                if((p.getEquipoVisitante().equals(e1) || p.getEquipoLocal().equals(e1)) && (p.getEquipoVisitante().equals(e2) || p.getEquipoLocal().equals(e2)))
+                    return true;
+            }
+            return false;
+        }
         public void generarFixture() {
             fixture.clear();
-            for (int i = 0; i < equipos.size(); i++) {
-                if(!(i+1<equipos.size())) {
-                    System.out.println("Partido no programado.");
-                    return;
+            for(Equipo e1: equipos){
+                for(Equipo e2: equipos){
+                    if(!e1.equals(e2) && !yaHayPArtidoConEsosEquipos(e1,e2)) {
+                        if(e2.esValido() && e1.esValido()){
+                            String turnoElegido = buscarTurnoComun(e2, e2);
+                            if (turnoElegido == null) {
+                                System.out.println("Partido no programado: " + e1.getNombre() + " vs " + e2.getNombre() + " (no comparten ningún turno disponible).");
+                            }
+                            else {
+                                int dia = buscarDiaDisponible();
+                                Partido partido = new Partido(e1, e2, dia, turnoElegido);
+                                fixture.add(partido);
+                            }
+                        }
+                        else{
+                            System.out.println("Partido no programado: " + e1.getNombre() + " vs " + e2.getNombre() + " (uno o ambos equipos no son válidos).");
+                        }
+                    }
                 }
-                Equipo local = equipos.get(i);
-                Equipo visitante = equipos.get(i+1);
-                if (!local.esValido() || !visitante.esValido()) {
-                    System.out.println("Partido no programado: " + local.getNombre() + " vs " + visitante.getNombre() + " (uno o ambos equipos no son válidos).");
-                    return;
-                }
-                String turnoElegido = buscarTurnoComun(local, visitante);
-                if (turnoElegido == null) {
-                    System.out.println("Partido no programado: " + local.getNombre() + " vs " + visitante.getNombre() + " (no comparten ningún turno disponible).");
-                    return;
-                }
-                int dia = buscarDiaDisponible(local, visitante);
-                Partido partido = new Partido(local, visitante, dia, turnoElegido);
-                fixture.add(partido);
             }
         }
 
         private String buscarTurnoComun(Equipo e1, Equipo e2) {
             for (String turno : TURNOS) {
-                if (e1.getTurnosDisponibles().contains(turno)
-                        && e2.getTurnosDisponibles().contains(turno)) {
+                if (e1.getTurnosDisponibles().contains(turno) && e2.getTurnosDisponibles().contains(turno)) {
                     return turno;
                 }
             }
             return null;
         }
+        private boolean hayPartidoEnEsaFecha(int dia){
+            for (Partido p: fixture){
+                if(p.getDia() == dia) return true;
+            }
+            return false;
+        }
 
-        private int buscarDiaDisponible(Equipo e1, Equipo e2) {
-            boolean diaLibre = false;
-            while (!diaLibre) {
-                boolean e1Ocupa = false;
-                boolean e2Ocupa = false;
-                for (Partido p : fixture) {
-                    if (p.getDia() == dia) {
-                        if (p.getEquipoLocal() == e1 || p.getEquipoVisitante() == e1) {
-                            e1Ocupa = true;
-                        }
-                        if (p.getEquipoLocal() == e2 || p.getEquipoVisitante() == e2) {
-                            e2Ocupa = true;
-                        }
-                    }
-                }
-                if (!e1Ocupa && !e2Ocupa) {
-                    diaLibre = true;
-                } else {
-                    dia++;
-                }
+        private int buscarDiaDisponible() {
+            while (hayPartidoEnEsaFecha(dia)){
+                dia++;
             }
             return dia;
         }
-
 
         public void mostrarFixture() {
             if (fixture.isEmpty()) {
@@ -130,7 +124,8 @@ public class Torneo {
             equipoC.agregarJugador(new Jugador("Arturo",   "Peña",      new Fecha(9,  9,  1999), 9,  false));
             equipoC.agregarJugador(new Jugador("Marta",    "Iglesias",  new Fecha(10, 10, 2000), 10, false));
             equipoC.agregarJugador(new Jugador("Emilio",   "Santos",    new Fecha(11, 11, 2001), 11, false));
-
+            equipoC.agregarTurno("mañana");
+            equipoC.agregarTurno("noche");
             Torneo campeonato = new Torneo();
             campeonato.agregarEquipo(equipoA);
             campeonato.agregarEquipo(equipoB);
@@ -140,5 +135,6 @@ public class Torneo {
             }
             campeonato.generarFixture();
             campeonato.mostrarFixture();
+
         }
 }
