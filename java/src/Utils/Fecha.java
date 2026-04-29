@@ -1,6 +1,7 @@
 package Utils;
 
 import java.time.LocalDate;
+import java.time.Period;
 
 public class Fecha {
     private int dia;
@@ -84,7 +85,14 @@ public class Fecha {
         int[] diasM = {31,28,31,30,31,30,31,31,30,31,30,31};
         return diasM[mes-1];
     }
-
+    public Fecha tiempoEntreFechaFin(Fecha fin){
+        Period periodo = Period.between(LocalDate.of(this.anio,this.mes,this.dia),LocalDate.of(fin.getYear(),fin.getMes(), fin.getDia()));
+        return new Fecha(periodo.getDays(),periodo.getMonths(),periodo.getYears());
+    }
+    public Fecha tiempoEntreFechaInicio(Fecha inicio){
+        Period periodo = Period.between(LocalDate.of(inicio.getYear(),inicio.getMes(), inicio.getDia()),LocalDate.of(this.anio,this.mes,this.dia));
+        return new Fecha(periodo.getDays(),periodo.getMonths(),periodo.getYears());
+    }
     public static void main(String[] args) {
 
     }

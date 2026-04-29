@@ -3,16 +3,10 @@ package Gente;
 import Decoracion.Cuadro;
 import Utils.Fecha;
 
-public class Restaurador {
-    private String nombre;
-    private String apellido;
-    private int dni;
-    private Fecha fecha;
+public class Restaurador extends Persona{
     private int aniosdeexp;
     public Restaurador(String nombre, String apellido, int dni, int aniosdeexp) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.dni = dni;
+        super(nombre,apellido,dni);
         this.aniosdeexp = aniosdeexp;
     }
     public void restaurar(Cuadro c){

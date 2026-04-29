@@ -8,6 +8,7 @@ public class Equipo {
     private String nombre;
     private ArrayList<Jugador> jugadores;
     private ArrayList<String> turnosDisponibles;
+    private Jugador capitan;
     public Equipo(String nombre) {
         this.nombre = nombre;
         this.jugadores = new ArrayList<>();
@@ -34,15 +35,7 @@ public class Equipo {
         if (jugadores.size() != 11) {
             return false;
         }
-        int cantCapitanes = 0;
-        for (Jugador j : jugadores) {
-            if (j.isEsCapitan()) {
-                cantCapitanes++;
-            }
-        }
-        if (cantCapitanes != 1) {
-            return false;
-        }
+        if(!hayCapitan()) return false;
         for (Jugador j : jugadores) {
             for (Jugador j2 : jugadores) {
                 if (j.getNumCamiseta() == j2.getNumCamiseta() && !j.equals(j2)) {
@@ -54,4 +47,15 @@ public class Equipo {
         return true;
     }
     public String getNombre() { return nombre; }
+
+    public Jugador getCapitan() {
+        return capitan;
+    }
+
+    public void setCapitan(Jugador capitan) {
+        this.capitan = capitan;
+    }
+    public boolean hayCapitan(){
+        return capitan != null;
+    }
 }

@@ -44,7 +44,7 @@ public class Materia {
     public int promedioEdad(){
         int total = 0;
         for(int i=0; i<alumnos.size();i++){
-            total+=(Period.between(LocalDate.of(alumnos.get(i).getFechan().getYear(),alumnos.get(i).getFechan().getMes(),alumnos.get(i).getFechan().getDia()), LocalDate.now()).getYears());
+            total+=(alumnos.get(i).getEdad());
         }
         return total/alumnos.size();
     }

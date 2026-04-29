@@ -1,4 +1,4 @@
-package Vehiculos;
+package Transporte;
 
 public class Submarino {
     private String nombre;
