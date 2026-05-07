@@ -40,12 +40,12 @@ public class Fecha {
         if(mes > 12 || mes <= 0) this.mes = 1;
         if(anio <= 0) this.anio = 1900;
     }
-    public void corta(){
-        System.out.println(dia+"-"+mes+"-"+anio);
+    public String corta(){
+        return (dia+"-"+mes+"-"+anio);
     }
-    public void larga(){
+    public String larga(){
         LocalDate fecha = LocalDate.of(anio,mes,dia);
-        System.out.println(fecha.getDayOfWeek() + " "+ dia + "de " + fecha.getMonth() + "de " + anio);
+        return (fecha.getDayOfWeek() + " "+ dia + "de " + fecha.getMonth() + "de " + anio);
     }
     public void siguiente(){
         if(dia != diaMes(mes)) dia++;

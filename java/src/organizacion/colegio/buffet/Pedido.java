@@ -57,4 +57,8 @@ public class Pedido {
     public void setEntregado(boolean entregado) {
         this.entregado = entregado;
     }
+
+    public String mostrarDatos(){
+        return "Fecha: "+fecha.corta()+" Plato: "+plato.getNombre()+" Persona: "+persona.getNombre()+" Hora: "+hora;
+    }
 }
