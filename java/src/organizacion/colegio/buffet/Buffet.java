@@ -56,26 +56,33 @@ public class Buffet {
     }
 
     public void topTresBestPlatos(){
-        Map<Plato,Integer> map = new HashMap<>();
-        int max = 0;
+        ArrayList<Plato> platos = new ArrayList<>();
+        ArrayList<Integer> cant = new ArrayList<>();
+        int max = -1;
         Plato platoMax = null;
         for(Plato plato : menu){
-            map.put(plato,0);
+            platos.add(plato);
+            cant.add(0);
         }
         for(Pedido pedido : pedidos){
-            map.put(pedido.getPlato(),map.get(pedido.getPlato())+1);
+            int index = platos.indexOf(pedido.getPlato());
+            cant.set(index, cant.get(index) + 1);
         }
-        for(int i = 0; i < 3 && i < map.size(); i++){
-            for(Map.Entry<Plato,Integer> entry : map.entrySet()){
-                if(entry.getValue()>max){
-                    max = entry.getValue();
-                    platoMax = entry.getKey();
+        for(int i = 0; i < 3 ;i++){
+            int j;
+            for( j = 0; j<platos.size(); j++){
+                if(cant.get(j)>max){
+                    max = cant.get(j);
+                    platoMax = platos.get(j);
                 }
             }
-            System.out.println("Plato: "+platoMax.getNombre() +" Cantidad de platos: "+max);
-            map.remove(platoMax);
-            max = 0;
-            platoMax = null;
+            if(platoMax!=null){
+                System.out.println("Plato: "+platoMax.getNombre() +" Cantidad de platos: "+max);
+                platos.remove(platoMax);
+                cant.remove(j);
+                max = -1;
+                platoMax = null;
+            }
         }
     }
 
