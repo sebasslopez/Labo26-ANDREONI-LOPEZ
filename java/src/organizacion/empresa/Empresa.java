@@ -44,9 +44,12 @@ public class Empresa {
     public String cualTieneMas(){
         int coches = 0,camiones = 0,bicis= 0;
         for(Vehiculo v : vehiculo){
-            if(v instanceof Coche)coches++;
-            else if (v instanceof Camion) camiones++;
-            else if(v instanceof Bicicleta) bicis++;
+            switch (v) {
+                case Camion c -> camiones++;
+                case Coche c -> coches++;
+                case Bicicleta b -> bicis++;
+                default ->{}
+            }
         }
         if(coches > camiones && coches > bicis)return "COCHEs";
         else if(camiones > coches && camiones > bicis) return "CAMI oN";
