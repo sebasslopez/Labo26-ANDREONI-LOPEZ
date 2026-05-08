@@ -1,5 +1,7 @@
-package organizacion;
+package organizacion.empresa;
 
+import organizacion.empresa.sistemaLlamada.SistemaLlamadas;
+import personas.Empleado;
 import transporte.Bicicleta;
 import transporte.Camion;
 import transporte.Coche;
@@ -9,9 +11,26 @@ import java.util.ArrayList;
 
 public class Empresa {
     private ArrayList<Vehiculo> vehiculo;
+    private ArrayList<Empleado> empleados;
+    private SistemaLlamadas sistema;
 
-    public Empresa(ArrayList<Vehiculo> vehiculo) {
+
+    public Empresa(ArrayList<Vehiculo> vehiculo, ArrayList<Empleado> empleados) {
         this.vehiculo = vehiculo;
+        this.empleados = empleados;
+    }
+    public Empresa(){
+        this.empleados = new ArrayList<>();
+        this.vehiculo = new ArrayList<>();
+        this.sistema = new SistemaLlamadas();
+    }
+
+    public ArrayList<Empleado> getEmpleados() {
+        return empleados;
+    }
+
+    public void setEmpleados(ArrayList<Empleado> empleados) {
+        this.empleados = empleados;
     }
 
     public ArrayList<Vehiculo> getVehiculo() {
@@ -64,5 +83,17 @@ public class Empresa {
             }
         }
         return (desca/coches)*100;
+    }
+
+    public SistemaLlamadas getSistema() {
+        return sistema;
+    }
+
+    public void setSistema(SistemaLlamadas sistema) {
+        this.sistema = sistema;
+    }
+
+    public void addEmpleado(Empleado empleado) {
+        this.empleados.add(empleado);
     }
 }
