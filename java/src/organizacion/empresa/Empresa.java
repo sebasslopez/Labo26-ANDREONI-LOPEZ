@@ -1,5 +1,6 @@
 package organizacion.empresa;
 
+import organizacion.empresa.sistemaLlamada.Llamada;
 import organizacion.empresa.sistemaLlamada.SistemaLlamadas;
 import personas.Empleado;
 import transporte.Bicicleta;
@@ -98,5 +99,47 @@ public class Empresa {
 
     public void addEmpleado(Empleado empleado) {
         this.empleados.add(empleado);
+    }
+
+    public void llamadasPorEmpleado(){
+        for(Empleado e : empleados){
+            System.out.println("Llamadas de "+e.getNombreCompleto());
+            for(Llamada l : sistema.getLlamadas()){
+                if(l.getPersonaOrigen().equals(e)) l.toStringSinOrigen();
+            }
+        }
+    }
+
+    public void rankingSuperEpico(){
+        //TODO:terminar esto agregando nuevos metodos que hagan cosas por separado.
+        ArrayList<Empleado> empl = new ArrayList<>();
+        ArrayList<Integer> cant = new ArrayList<>();
+        int max = -1;
+        Empleado superEmpleado = null;
+        for(Llamada e : sistema.getLlamadas()){
+            if(empl.contains((Empleado) e.getPersonaOrigen()))empl.add((Empleado) e.getPersonaOrigen());
+            if(empl.contains((Empleado) e.getPersonaDestino()))
+        }
+        for(Empleado e : empl){
+            int index = empl.indexOf(e);
+            cant.set(index, (int) (cant.get(index) + e.getDuracion()));
+
+        }
+        for(int i = 0; i < 3 ;i++){
+            int j;
+            for( j = 0; j<llamadas.size(); j++){
+                if(cant.get(j)>max){
+                    max = cant.get(j);
+                    superEmpleado = llamadas.get(j).setPersonaOrigen();
+                }
+            }
+            if(platoMax!=null){
+                System.out.println("Plato: "+platoMax.getNombre() +" Cantidad de platos: "+max);
+                platos.remove(platoMax);
+                cant.remove(j);
+                max = -1;
+                platoMax = null;
+            }
+        }
     }
 }

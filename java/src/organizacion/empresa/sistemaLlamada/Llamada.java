@@ -60,4 +60,12 @@ public class Llamada {
 
     public void calcCosto() {
     }
+
+    public String toString() {
+        return "Persona Origen: "+personaOrigen.getNombreCompleto()+" Persona Destino: "+personaDestino.getNombreCompleto()+" Fecha: "+fecha.toString()+" duración: " + duracion;
+    }
+
+    public String toStringSinOrigen(){
+        return "Persona Destino: "+personaDestino.getNombreCompleto()+" Fecha: "+fecha.toString()+" duración: " + duracion;
+    }
 }

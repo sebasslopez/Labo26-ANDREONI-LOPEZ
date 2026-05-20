@@ -105,8 +105,11 @@ public class Persona {
     }
 
     public String datos() {
+        return "Nombre:" + nombre + " " + apellido + " Edad:" + getEdad() + " Dirección:" + direccion +" DNI: "+dni;
+    }
 
-        return "los datos son: Nombre:" + nombre + " Edad:" + getEdad() + " Dirección:" + direccion;
+    public String getNombreCompleto(){
+        return nombre + " " + apellido;
     }
 
     public static void main(String[] args) {

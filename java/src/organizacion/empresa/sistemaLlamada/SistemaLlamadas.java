@@ -13,7 +13,6 @@ public class SistemaLlamadas {
     }
 
     public Llamada addLlamada(Empleado origen, int numero, String franjaHoraria) {
-        // checkear que el número esté en la empresa
         Empleado destino = null;
         for (Empleado empleado : origen.getEmpresa().getEmpleados()) {
             if (empleado.getTelefono() == numero) {
@@ -25,7 +24,6 @@ public class SistemaLlamadas {
             return null;
         }
 
-        // checkear si es local o no
         Llamada llamada;
         if (origen.getPais().equals(destino.getPais())) {
             llamada = new LlamadaNacional(origen, destino);
@@ -36,7 +34,6 @@ public class SistemaLlamadas {
     }
 
     public void registrarLlamada(Llamada llamada, double duracion) {
-        // registrar
         llamada.setDuracion(duracion);
         llamada.calcCosto();
         this.llamadas.add(llamada);
@@ -51,7 +48,6 @@ public class SistemaLlamadas {
     }
 
     public static void main(String[] args) {
-        // Crear empresa y empleados
         Empresa empresa = new Empresa();
 
         Empleado emp1 = new Empleado("García", "Carlos", 12345678, "Argentina", 111, empresa, "Buenos Aires");
@@ -72,7 +68,6 @@ public class SistemaLlamadas {
 
         SistemaLlamadas sistema = empresa.getSistema();
 
-        // Llamada nacional (emp1 → emp2, mismo país)
         System.out.println("\n=== Llamada Nacional (Argentina → Argentina) ===");
         Llamada nacional = sistema.addLlamada(emp1, 222, null);
         if (nacional != null) {
@@ -85,7 +80,6 @@ public class SistemaLlamadas {
             System.out.println("Fecha    : " + nacional.getFecha());
         }
 
-        // Llamada internacional (emp1 → emp3, distinto país)
         System.out.println("\n=== Llamada Internacional (Argentina → Brasil) ===");
         Llamada internacional = sistema.addLlamada(emp1, 333, "UTC-3");
         if (internacional != null) {
@@ -99,17 +93,14 @@ public class SistemaLlamadas {
             System.out.println("Fecha    : " + internacional.getFecha());
         }
 
-        // Llamada a número inexistente
         System.out.println("\n=== Llamada a número inexistente (tel: 999) ===");
         Llamada inexistente = sistema.addLlamada(emp1, 999, null);
         System.out.println("Resultado: " + (inexistente == null ? "null — número no encontrado en la empresa" : "encontrada"));
 
-        // Usando Empleado.llamar() — emp2 (Argentina) llama a emp3 (Brasil)
         System.out.println("\n=== Empleado.llamar() — emp2 llama a emp3 ===");
         emp2.llamar(333);
         System.out.println("Llamada registrada vía Empleado.llamar()");
 
-        // Resumen de todas las llamadas registradas
         System.out.println("\n=== Todas las llamadas registradas ===");
         for (Llamada l : sistema.getLlamadas()) {
             System.out.println(l.getClass().getSimpleName()

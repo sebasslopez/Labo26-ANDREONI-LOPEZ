@@ -44,4 +44,7 @@ public class Elemento {
     public void setAnio(int anio) {
         this.anio = anio;
     }
+
+    public void dispararAlarma(){
+    }
 }
