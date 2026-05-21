@@ -8,6 +8,7 @@ public class Persona {
     private String direccion;
     private Fecha fechan;
     private int dni;
+    private String pais;
 
     public Persona(String nombre, String apellido, int dni, Fecha fechan) {
         this.nombre = nombre;
@@ -16,6 +17,12 @@ public class Persona {
         this.fechan = fechan;
     }
 
+    public Persona(String nombre, String apellido, int dni, String pais) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.dni = dni;
+        this.pais = pais;
+    }
 
     public Persona(String nombre, String apellido, int dni) {
         this.nombre = nombre;
@@ -104,12 +111,28 @@ public class Persona {
         return fechan;
     }
 
+    public String getPais() {
+        return pais;
+    }
+
+    public void setPais(String pais) {
+        this.pais = pais;
+    }
+
     public String datos() {
         return "Nombre:" + nombre + " " + apellido + " Edad:" + getEdad() + " Dirección:" + direccion +" DNI: "+dni;
     }
 
     public String getNombreCompleto(){
         return nombre + " " + apellido;
+    }
+
+    public boolean tieneMismoDniQue(int dni) {
+        return this.dni == dni;
+    }
+
+    public boolean viveEnElMismoPaisQue(Persona otraPersona) {
+        return this.pais.equalsIgnoreCase(otraPersona.getPais());
     }
 
     public static void main(String[] args) {

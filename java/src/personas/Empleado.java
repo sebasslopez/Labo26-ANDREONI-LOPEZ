@@ -1,21 +1,18 @@
 package personas;
 
-import organizacion.empresa.Empresa;
-import organizacion.empresa.sistemaLlamada.Llamada;
-import organizacion.empresa.sistemaLlamada.SistemaLlamadas;
-
 public class Empleado extends Persona{
-    private Empresa empresa;
     private String provincia;
-    private int telefono;
-    private String pais;
+    private String telefono;
+    private String codigoPais;
+    private String franjaHoraria;
 
-    public Empleado(String apellido, String nombre, int DNI, String pais, int telefono, Empresa empresa, String provincia) {
-        super(apellido, nombre, DNI);
-        this.empresa = empresa;
-        this.provincia = provincia;
+    public Empleado(String nombre, String apellido, int dni, String pais,
+                    String telefono, String provincia, String codigoPais, String franjaHoraria) {
+        super(nombre, apellido, dni, pais);
         this.telefono = telefono;
-        this.pais = pais;
+        this.provincia = provincia;
+        this.codigoPais = codigoPais;
+        this.franjaHoraria = franjaHoraria;
     }
 
     public String getProvincia() {
@@ -26,36 +23,23 @@ public class Empleado extends Persona{
         this.provincia = provincia;
     }
 
-    public Empresa getEmpresa() {
-        return empresa;
-    }
-
-    public void setEmpresa(Empresa empresa) {
-        this.empresa = empresa;
-    }
-
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 
-    public String getPais() {
-        return pais;
+    public String getCodigoPais() {
+        return codigoPais;
     }
 
-    public void setPais(String pais) {
-        this.pais = pais;
+    public String getFranjaHoraria() {
+        return franjaHoraria;
     }
 
-    public void llamar(int numero) {
-        Llamada llamada = this.empresa.getSistema().addLlamada(this, numero, "UTF-3");
-        if (llamada == null) {
-            System.out.println("se ha intentado llamar a un numero fuera de la empresa");
-        } else {
-            this.empresa.getSistema().registrarLlamada(llamada, 10);
-        }
+    public boolean tieneTelefono(String telefono) {
+        return this.telefono.equals(telefono);
     }
 }

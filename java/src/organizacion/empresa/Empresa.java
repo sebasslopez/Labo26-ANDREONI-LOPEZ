@@ -1,7 +1,8 @@
 package organizacion.empresa;
 
-import organizacion.empresa.sistemaLlamada.Llamada;
-import organizacion.empresa.sistemaLlamada.SistemaLlamadas;
+import organizacion.empresa.llamada.Llamada;
+import organizacion.empresa.llamada.LlamadaInternacional;
+import organizacion.empresa.llamada.LlamadaLocal;
 import personas.Empleado;
 import transporte.Bicicleta;
 import transporte.Camion;
@@ -13,17 +14,28 @@ import java.util.ArrayList;
 public class Empresa {
     private ArrayList<Vehiculo> vehiculo;
     private ArrayList<Empleado> empleados;
-    private SistemaLlamadas sistema;
-
+    private String nombre;
+    private ArrayList<Llamada> llamadas;
 
     public Empresa(ArrayList<Vehiculo> vehiculo, ArrayList<Empleado> empleados) {
         this.vehiculo = vehiculo;
         this.empleados = empleados;
+        this.nombre = "PoliEmpresa";
+        this.llamadas = new ArrayList<>();
     }
-    public Empresa(){
+
+    public Empresa(String nombre) {
+        this.nombre = nombre;
         this.empleados = new ArrayList<>();
+        this.llamadas = new ArrayList<>();
         this.vehiculo = new ArrayList<>();
-        this.sistema = new SistemaLlamadas();
+    }
+
+    public Empresa(){
+        this.vehiculo = new ArrayList<>();
+        this.empleados = new ArrayList<>();
+        this.nombre = "PoliEmpresa";
+        this.llamadas = new ArrayList<>();
     }
 
     public ArrayList<Empleado> getEmpleados() {
@@ -40,6 +52,204 @@ public class Empresa {
 
     public void setVehiculo(ArrayList<Vehiculo> vehiculo) {
         this.vehiculo = vehiculo;
+    }
+
+    public boolean agregarCarga (Camion c, int cantkg){
+        if(cantkg > c.getCapkg()){
+            return false;
+        }
+        c.setCapkg(cantkg);
+        return true;
+    }
+
+    public int porcentajeDesc(){
+        int coches = 0,desca = 0;
+        for( Vehiculo v : vehiculo){
+            if(v instanceof Coche c){
+                coches++;
+                if(c.isDescapotable()) desca++;
+            }
+        }
+        return (desca/coches)*100;
+    }
+
+    public boolean agregarEmpleado(Empleado empleado) {
+        if (existeDni(empleado.getDni()) || existeTelefono(empleado.getTelefono())) {
+            return false;
+        }
+        empleados.add(empleado);
+        return true;
+    }
+
+    public boolean registrarLlamada(Empleado origen, String telefonoDestino, int duracionMinutos) {
+        if (origen == null || telefonoDestino == null || duracionMinutos <= 0) {
+            return false;
+        }
+
+        if (!existeEmpleado(origen)) {
+            return false;
+        }
+
+        Empleado destino = buscarEmpleadoPorTelefono(telefonoDestino);
+
+        if (destino == null) {
+            return false;
+        }
+
+        if (origen.tieneMismoDniQue(destino.getDni())) {
+            return false;
+        }
+
+        Llamada llamada = crearLlamada(origen, destino, duracionMinutos);
+        llamadas.add(llamada);
+        return true;
+    }
+
+    public Llamada crearLlamada(Empleado origen, Empleado destino, int duracionMinutos) {
+        if (origen.viveEnElMismoPaisQue(destino)) {
+            return new LlamadaLocal(origen, destino, duracionMinutos);
+        }
+
+        return new LlamadaInternacional(origen, destino, duracionMinutos);
+    }
+
+    public ArrayList<Llamada> obtenerLlamadasDe(Empleado empleado) {
+        ArrayList<Llamada> llamadasDelEmpleado = new ArrayList<>();
+
+        for (Llamada llamada : llamadas) {
+            if (llamada.fueRealizadaPor(empleado)) {
+                llamadasDelEmpleado.add(llamada);
+            }
+        }
+        return llamadasDelEmpleado;
+    }
+
+    public void mostrarRankingEmpleadosQueMasTiempoLlamaronAlExterior() {
+        ArrayList<Empleado> empleadosRanking = new ArrayList<>();
+        ArrayList<Integer> minutosRanking = new ArrayList<>();
+
+        cargarMinutosAlExterior(empleadosRanking, minutosRanking);
+
+        if (empleadosRanking.isEmpty()) {
+            System.out.println("No se registraron llamadas al exterior.");
+            return;
+        }
+
+        ordenarRankingPorMinutosDescendente(empleadosRanking, minutosRanking);
+        imprimirRankingExterior(empleadosRanking, minutosRanking);
+    }
+
+    public void cargarMinutosAlExterior(ArrayList<Empleado> empleadosRanking,
+                                        ArrayList<Integer> minutosRanking) {
+
+        for (Empleado empleado : empleados) {
+            int minutos = calcularMinutosAlExteriorDe(empleado);
+
+            if (minutos > 0) {
+                empleadosRanking.add(empleado);
+                minutosRanking.add(minutos);
+            }
+        }
+    }
+    public int calcularMinutosAlExteriorDe(Empleado empleado) {
+        int total = 0;
+
+        for (Llamada llamada : llamadas) {
+
+            total = total + llamada.obtenerMinutosAlExteriorDe(empleado);
+        }
+
+        return total;
+    }
+
+    public void ordenarRankingPorMinutosDescendente(ArrayList<Empleado> empleadosRanking,
+                                                    ArrayList<Integer> minutosRanking) {
+        //TODO: Teniendo en cuenta los dos arreglos,
+        // ordenar desde el empleado que tiene mayor cantidad de minutos
+        // al exterior al menor.
+
+        boolean ordenado = false;
+        while (!ordenado) {
+            ordenado = true;
+            for(int i = 1; i < minutosRanking.size(); i++) {
+                if (minutosRanking.get(i-1) < minutosRanking.get(i)) {
+                    Empleado aux = null;
+                    int minAux = 0;
+                    aux = empleadosRanking.get(i-1);
+                    minAux = minutosRanking.get(i-1);
+                    minutosRanking.set(i-1, minutosRanking.get(i));
+                    empleadosRanking.set(i-1, empleadosRanking.get(i));
+                    minutosRanking.set(i,minAux);
+                    empleadosRanking.set(i,aux);
+                    ordenado = false;
+                }
+            }
+        }
+    }
+
+    private void imprimirRankingExterior(ArrayList<Empleado> empleadosRanking,
+                                         ArrayList<Integer> minutosRanking) {
+
+        System.out.println("Ranking de empleados que mas tiempo llamaron al exterior:");
+        //TODO: Mostrar el ranking ordenado concatenando el empleado con los minutos
+        for (Empleado empleado : empleadosRanking) {
+            System.out.println("Empleado: " + empleado.getNombreCompleto() + ", Minutos: " + minutosRanking.get(empleadosRanking.indexOf(empleado)));
+        }
+    }
+
+    public void mostrarLlamadasDe(Empleado empleado) {
+        //TODO: Implementar un método que reciba un empleado y muestre
+        // todas las llamadas que haya hecho ese empleado. Luego, mostrar el costo total
+        double total = 0;
+        System.out.println("Llamadas de: "+ empleado.getNombreCompleto());
+        for(Llamada llamada : llamadas) {
+            if(llamada.fueRealizadaPor(empleado)){
+                System.out.println(llamada.obtenerDetalle());
+                total += llamada.calcularCosto();
+            }
+        }
+        System.out.println("Costo total: " + total);
+    }
+
+    public void mostrarTodasLasLlamadas() {
+        //TODO: Ver el detalle de todas las llamadas de la empresa por empleado
+        for(Empleado empleado : empleados){
+            mostrarLlamadasDe(empleado);
+        }
+    }
+
+    public boolean existeEmpleado(Empleado empleado) {
+        for (Empleado empleadoActual : empleados) {
+            if (empleadoActual.tieneMismoDniQue(empleado.getDni())) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public boolean existeDni(int dni) {
+        for (Empleado empleado : empleados) {
+            if (empleado.tieneMismoDniQue(dni)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public boolean existeTelefono(String telefono) {
+        return buscarEmpleadoPorTelefono(telefono) != null;
+    }
+
+    public Empleado buscarEmpleadoPorTelefono(String telefono) {
+        for (Empleado empleado : empleados) {
+            if (empleado.tieneTelefono(telefono)) {
+                return empleado;
+            }
+        }
+
+        return null;
     }
 
     public String cualTieneMas(){
@@ -70,76 +280,50 @@ public class Empresa {
 
     }
 
-    public boolean agregarCarga (Camion c, int cantkg){
-        if(cantkg > c.getCapkg()){
-            return false;
-        }
-        c.setCapkg(cantkg);
-        return true;
-    }
+    public static void main(String[] args) {
+        Empresa empresa = new Empresa("IPM Sistemas");
 
-    public int porcentajeDesc(){
-        int coches = 0,desca = 0;
-        for( Vehiculo v : vehiculo){
-            if(v instanceof Coche c){
-                coches++;
-                if(c.isDescapotable()) desca++;
-            }
-        }
-        return (desca/coches)*100;
-    }
+        Empleado ana = new Empleado("Ana", "Lopez", 111, "Argentina", "1111", "Buenos Aires", "+54", "GMT-3");
+        Empleado juan = new Empleado("Juan", "Perez", 222, "Argentina", "2222", "Cordoba", "+54", "GMT-3");
+        Empleado maria = new Empleado("Maria", "Silva", 333, "Uruguay", "3333", "Montevideo", "+598", "GMT-3");
+        Empleado lucas = new Empleado("Lucas", "Gomez", 444, "Argentina", "4444", "Rosario", "+54", "GMT-3");
+        Empleado sofia = new Empleado("Sofia", "Martinez", 555, "Chile", "5555", "Santiago", "+56", "GMT-4");
+        Empleado carlos = new Empleado("Carlos", "Fernandez", 666, "Brasil", "6666", "Rio de Janeiro", "+55", "GMT-3");
 
-    public SistemaLlamadas getSistema() {
-        return sistema;
-    }
 
-    public void setSistema(SistemaLlamadas sistema) {
-        this.sistema = sistema;
-    }
+        empresa.agregarEmpleado(ana);
+        empresa.agregarEmpleado(juan);
+        empresa.agregarEmpleado(maria);
+        empresa.agregarEmpleado(lucas);
+        empresa.agregarEmpleado(sofia);
+        empresa.agregarEmpleado(carlos);
 
-    public void addEmpleado(Empleado empleado) {
-        this.empleados.add(empleado);
-    }
+        // Ana llama a Juan. Como ambos son de Argentina, se crea una LlamadaLocal.
+        empresa.registrarLlamada(ana, "2222", 5);
 
-    public void llamadasPorEmpleado(){
-        for(Empleado e : empleados){
-            System.out.println("Llamadas de "+e.getNombreCompleto());
-            for(Llamada l : sistema.getLlamadas()){
-                if(l.getPersonaOrigen().equals(e)) l.toStringSinOrigen();
-            }
-        }
-    }
+        // Ana llama a Maria. Como son de paises distintos, se crea una LlamadaInternacional.
+        empresa.registrarLlamada(ana, "3333", 3);
 
-    public void rankingSuperEpico(){
-        //TODO:terminar esto agregando nuevos metodos que hagan cosas por separado.
-        ArrayList<Empleado> empl = new ArrayList<>();
-        ArrayList<Integer> cant = new ArrayList<>();
-        int max = -1;
-        Empleado superEmpleado = null;
-        for(Llamada e : sistema.getLlamadas()){
-            if(empl.contains((Empleado) e.getPersonaOrigen()))empl.add((Empleado) e.getPersonaOrigen());
-            if(empl.contains((Empleado) e.getPersonaDestino()))
-        }
-        for(Empleado e : empl){
-            int index = empl.indexOf(e);
-            cant.set(index, (int) (cant.get(index) + e.getDuracion()));
+        // Juan llama a Sofia -> llamada internacional
+        empresa.registrarLlamada(juan, "5555", 7);
 
-        }
-        for(int i = 0; i < 3 ;i++){
-            int j;
-            for( j = 0; j<llamadas.size(); j++){
-                if(cant.get(j)>max){
-                    max = cant.get(j);
-                    superEmpleado = llamadas.get(j).setPersonaOrigen();
-                }
-            }
-            if(platoMax!=null){
-                System.out.println("Plato: "+platoMax.getNombre() +" Cantidad de platos: "+max);
-                platos.remove(platoMax);
-                cant.remove(j);
-                max = -1;
-                platoMax = null;
-            }
-        }
+        // Sofia llama a Carlos -> llamada internacional
+        empresa.registrarLlamada(sofia, "6666", 4);
+
+        // Carlos llama a Maria -> llamada internacional
+        empresa.registrarLlamada(carlos, "3333", 8);
+
+        // Maria llama a Lucas -> llamada internacional
+        empresa.registrarLlamada(maria, "4444", 6);
+
+        // No se registra porque el numero no pertenece a ningun empleado cargado.
+        boolean seRegistro = empresa.registrarLlamada(ana, "9999", 10);
+        System.out.println("Se registro la llamada al 9999? " + seRegistro);
+        System.out.println();
+
+        empresa.mostrarTodasLasLlamadas();
+        empresa.mostrarLlamadasDe(ana);
+
+        empresa.mostrarRankingEmpleadosQueMasTiempoLlamaronAlExterior();
     }
 }
