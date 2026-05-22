@@ -10,6 +10,8 @@ public class Persona {
     private int dni;
     private String pais;
 
+
+
     public Persona(String nombre, String apellido, int dni, Fecha fechan) {
         this.nombre = nombre;
         this.apellido = apellido;

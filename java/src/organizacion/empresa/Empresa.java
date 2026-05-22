@@ -173,10 +173,8 @@ public class Empresa {
             ordenado = true;
             for(int i = 1; i < minutosRanking.size(); i++) {
                 if (minutosRanking.get(i-1) < minutosRanking.get(i)) {
-                    Empleado aux = null;
-                    int minAux = 0;
-                    aux = empleadosRanking.get(i-1);
-                    minAux = minutosRanking.get(i-1);
+                    Empleado aux = empleadosRanking.get(i-1);
+                    int minAux = minutosRanking.get(i-1);
                     minutosRanking.set(i-1, minutosRanking.get(i));
                     empleadosRanking.set(i-1, empleadosRanking.get(i));
                     minutosRanking.set(i,minAux);
