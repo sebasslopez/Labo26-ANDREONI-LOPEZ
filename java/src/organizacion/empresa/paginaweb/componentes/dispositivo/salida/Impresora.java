@@ -1,6 +1,4 @@
-package electrodomesticos;
-
-import organizacion.empresa.paginaweb.componentes.DispositivosSalida;
+package organizacion.empresa.paginaweb.componentes.dispositivo.salida;
 
 public class Impresora extends DispositivosSalida {
 private String metodoimpr;

@@ -3,7 +3,7 @@ package organizacion.empresa.paginaweb.compras.metodoDePago;
 public class MetodoDePago {
 private double plata;
 
-    public MetodoDePago(float plata) {
+    public MetodoDePago(double plata) {
         this.plata = plata;
     }
 

@@ -1,4 +1,6 @@
-package organizacion.empresa.paginaweb.componentes;
+package organizacion.empresa.paginaweb.componentes.dispositivo.entrada;
+
+import organizacion.empresa.paginaweb.componentes.Componente;
 
 public class DispositivosEntrada extends Componente {
     private String tipoconector;
