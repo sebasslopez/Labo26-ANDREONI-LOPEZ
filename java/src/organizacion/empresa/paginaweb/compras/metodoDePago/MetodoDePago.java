@@ -15,8 +15,19 @@ private double plata;
         this.plata = plata;
     }
 
-    public void pagar(double monto){
-
+    public boolean pagar(double monto){
+        return false;
     }
 
+    public double calcularRecargo(double subtotal) {
+        return 0;
+    }
+
+    public double calcularTotal(double subtotal) {
+        return subtotal + calcularRecargo(subtotal);
+    }
+
+    public String pagaCon(){
+        return this.getClass().getSimpleName();
+    }
 }

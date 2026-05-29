@@ -29,15 +29,18 @@ public class Tarjeta extends MetodoDePago {
         this.banco = banco;
     }
 
-
-
-    @Override
-    public void pagar(double monto) {
-        monto*=monto*1.05;
-        if(getPlata() >= monto){
-            setPlata(getPlata()-monto);
-        }
+    public double calcularRecargo(double subtotal) {
+        return subtotal*0.05;
     }
 
+    @Override
+    public boolean pagar(double monto) {
+        monto = calcularTotal(monto);
+        if(getPlata() >= monto){
+            setPlata(getPlata()-monto);
+            return true;
+        }
+        return false;
+    }
 
 }

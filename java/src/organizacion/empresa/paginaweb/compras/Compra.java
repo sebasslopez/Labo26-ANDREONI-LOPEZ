@@ -1,6 +1,6 @@
 package organizacion.empresa.paginaweb.compras;
 
-import organizacion.empresa.paginaweb.Computadora;
+import electrodomesticos.Computadora;
 import organizacion.empresa.paginaweb.componentes.CPU;
 import organizacion.empresa.paginaweb.componentes.Componente;
 import organizacion.empresa.paginaweb.componentes.dispositivo.entrada.DispositivosEntrada;
@@ -19,10 +19,41 @@ public class Compra {
         this.compu = compu;
     }
 
-    public boolean sePuedeComprar(){
-        return hayCPU() && hayDispDeEntrada() && hayDispDeSalida();
+    public Cliente getCliente() {
+        return cliente;
     }
 
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public Computadora getCompu() {
+        return compu;
+    }
+
+    public void setCompu(Computadora compu) {
+        this.compu = compu;
+    }
+
+    public MetodoDePago getMdp() {
+        return mdp;
+    }
+
+    public void setMdp(MetodoDePago mdp) {
+        this.mdp = mdp;
+    }
+
+    public boolean sePuedeComprar(){
+        return hayCPU() && hayDispDeEntrada() && hayDispDeSalida() && hayStock();
+    }
+
+    private boolean hayStock(){
+        boolean hayStock = true;
+        for (Componente c :  compu.getComponentes()){
+            if(!c.hayStockSuficiente()) hayStock = false;
+        }
+        return hayStock;
+    }
     private boolean hayCPU(){
         boolean hay = false;
         for(Componente c : compu.getComponentes()){
@@ -51,4 +82,16 @@ public class Compra {
         return hay;
     }
 
+    public void disminuirStock(){
+        for(Componente c : compu.getComponentes()){
+            c.setStock(c.getStock() - 1);
+        }
+    }
+
+    public void mostrarDetalles(){
+        double subtotal = compu.calcularTotal();
+        System.out.println("Cliente: "+cliente.getNombreCompleto()+" subtotal: "+subtotal+" recargo: "+mdp.calcularRecargo(subtotal)+" total: "+mdp.calcularTotal(subtotal)
+        +"Paga con: "+mdp.pagaCon()+"Componentes de la Compu: ");
+        compu.mostrarComponentes();
+    }
 }

@@ -1,13 +1,16 @@
 package organizacion.empresa.paginaweb.componentes;
 
+import organizacion.empresa.paginaweb.componentes.dispositivo.entrada.DispositivosEntrada;
+import organizacion.empresa.paginaweb.componentes.dispositivo.salida.DispositivosSalida;
+
 public class Componente {
     private String nomfab;
     private String modelo;
-    private float precioventa;
+    private Double precioventa;
     private int stock;
 
 
-    public Componente(int stock, float precioventa, String modelo, String nomfab) {
+    public Componente(int stock, Double precioventa, String modelo, String nomfab) {
         this.stock = stock;
         this.precioventa = precioventa;
         this.modelo = modelo;
@@ -22,11 +25,11 @@ public class Componente {
         this.stock = stock;
     }
 
-    public float getPrecioventa() {
+    public double getPrecioventa() {
         return precioventa;
     }
 
-    public void setPrecioventa(float precioventa) {
+    public void setPrecioventa(double precioventa) {
         this.precioventa = precioventa;
     }
 
@@ -46,7 +49,23 @@ public class Componente {
         this.nomfab = nomfab;
     }
 
-public void actualizacionPrecio(float porcentaje){
+    public void actualizacionPrecio(float porcentaje){
         this.precioventa+=precioventa*porcentaje;
 }
+
+    public boolean esDispDeEntrada(){
+        return this instanceof DispositivosEntrada;
+    }
+
+    public boolean esDispDeSalida(){
+        return this instanceof DispositivosSalida;
+    }
+
+    public boolean hayStockSuficiente(){
+        return stock>0;
+    }
+
+    public String mostrarNombreYModelo(){
+        return nomfab + " " +modelo;
+    }
 }

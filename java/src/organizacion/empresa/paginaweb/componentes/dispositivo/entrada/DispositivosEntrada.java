@@ -6,7 +6,7 @@ public class DispositivosEntrada extends Componente {
     private String tipoconector;
     private int cantpuertos;
 
-    public DispositivosEntrada(int stock, float precioventa, String modelo, String nomfab, int cantpuertos, String tipoconector) {
+    public DispositivosEntrada(int stock, double precioventa, String modelo, String nomfab, int cantpuertos, String tipoconector) {
         super(stock, precioventa, modelo, nomfab);
         this.cantpuertos = cantpuertos;
         this.tipoconector = tipoconector;

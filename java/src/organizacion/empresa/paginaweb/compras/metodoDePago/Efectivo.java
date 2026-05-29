@@ -6,9 +6,12 @@ public class Efectivo extends MetodoDePago {
     }
 
     @Override
-    public void pagar(double     monto) {
+    public boolean pagar(double monto) {
        if(getPlata()>=monto){
            setPlata(getPlata()-monto);
+           return true;
        }
+       return false;
     }
+
 }
