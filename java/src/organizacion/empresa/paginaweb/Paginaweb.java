@@ -25,6 +25,30 @@ public class Paginaweb {
         componentes = new ArrayList<>();
     }
 
+    public ArrayList<Computadora> getCompusvendidas() {
+        return compusvendidas;
+    }
+
+    public void setCompusvendidas(ArrayList<Computadora> compusvendidas) {
+        this.compusvendidas = compusvendidas;
+    }
+
+    public ArrayList<Componente> getComponentes() {
+        return componentes;
+    }
+
+    public void setComponentes(ArrayList<Componente> componentes) {
+        this.componentes = componentes;
+    }
+
+    public void addComponente(Componente c){
+        componentes.add(c);
+    }
+
+    public void removeComponente(Componente c){
+        componentes.remove(c);
+    }
+
     public void mostrarcantDeDispositivosDeES(Computadora c){
         if(!estaVendida(c)) return ;
         System.out.println("Total de dispositivos de E/S: "+c.cantDispositivosDeES());
@@ -89,6 +113,17 @@ public class Paginaweb {
 
         Computadora compu1 = new Computadora();
         Computadora compu2 = new Computadora();
+
+        p.addComponente(componente1);
+        p.addComponente(componente2);
+        p.addComponente(componente3);
+        p.addComponente(componente4);
+        p.addComponente(cpu);
+        p.addComponente(cpu2);
+        p.addComponente(mouse);
+        p.addComponente(teclado);
+        p.addComponente(impresora);
+        p.addComponente(pantalla);
 
         compu1.addComponente(componente1);
         compu1.addComponente(cpu2);
