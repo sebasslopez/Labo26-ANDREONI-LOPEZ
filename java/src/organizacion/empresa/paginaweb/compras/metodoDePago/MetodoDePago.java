@@ -1,21 +1,11 @@
 package organizacion.empresa.paginaweb.compras.metodoDePago;
 
+import personas.Cliente;
+
 public class MetodoDePago {
-private double plata;
+    public MetodoDePago() {}
 
-    public MetodoDePago(double plata) {
-        this.plata = plata;
-    }
-
-    public double getPlata() {
-        return plata;
-    }
-
-    public void setPlata(double plata) {
-        this.plata = plata;
-    }
-
-    public boolean pagar(double monto){
+    public boolean pagar(Cliente c, double monto){
         return false;
     }
 

@@ -90,8 +90,8 @@ public class Compra {
 
     public void mostrarDetalles(){
         double subtotal = compu.calcularTotal();
-        System.out.println("Cliente: "+cliente.getNombreCompleto()+" subtotal: "+subtotal+" recargo: "+mdp.calcularRecargo(subtotal)+" total: "+mdp.calcularTotal(subtotal)
-        +"Paga con: "+mdp.pagaCon()+"Componentes de la Compu: ");
+        System.out.println("Cliente: "+cliente.getNombreCompleto()+" | subtotal: "+subtotal+" | recargo: "+mdp.calcularRecargo(subtotal)+" | total: "+mdp.calcularTotal(subtotal)
+        +" | Paga con: "+mdp.pagaCon()+" | Componentes de la Compu: ");
         compu.mostrarComponentes();
     }
 }

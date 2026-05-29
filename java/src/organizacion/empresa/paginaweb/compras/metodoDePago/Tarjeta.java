@@ -1,13 +1,12 @@
 package organizacion.empresa.paginaweb.compras.metodoDePago;
 
-public class Tarjeta extends MetodoDePago {
+import personas.Cliente;
 
+public class Tarjeta extends MetodoDePago {
     private int numtarj;
     private String banco;
 
-
-    public Tarjeta(double plata, int numtarj, String banco) {
-        super(plata);
+    public Tarjeta(int numtarj, String banco) {
         this.numtarj = numtarj;
         this.banco = banco;
 
@@ -34,10 +33,10 @@ public class Tarjeta extends MetodoDePago {
     }
 
     @Override
-    public boolean pagar(double monto) {
+    public boolean pagar(Cliente c, double monto) {
         monto = calcularTotal(monto);
-        if(getPlata() >= monto){
-            setPlata(getPlata()-monto);
+        if(c.getPlata() >= monto){
+            c.setPlata(c.getPlata()-monto);
             return true;
         }
         return false;

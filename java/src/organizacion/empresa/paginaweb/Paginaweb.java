@@ -3,14 +3,13 @@ package organizacion.empresa.paginaweb;
 import electrodomesticos.Computadora;
 import organizacion.empresa.paginaweb.componentes.CPU;
 import organizacion.empresa.paginaweb.componentes.Componente;
-import organizacion.empresa.paginaweb.componentes.dispositivo.entrada.DispositivosEntrada;
 import organizacion.empresa.paginaweb.componentes.dispositivo.entrada.Mouse;
 import organizacion.empresa.paginaweb.componentes.dispositivo.entrada.Teclado;
-import organizacion.empresa.paginaweb.componentes.dispositivo.salida.DispositivosSalida;
 import organizacion.empresa.paginaweb.componentes.dispositivo.salida.Impresora;
 import organizacion.empresa.paginaweb.componentes.dispositivo.salida.Pantalla;
 import organizacion.empresa.paginaweb.compras.Compra;
 import organizacion.empresa.paginaweb.compras.metodoDePago.Efectivo;
+import organizacion.empresa.paginaweb.compras.metodoDePago.MetodoDePago;
 import organizacion.empresa.paginaweb.compras.metodoDePago.Tarjeta;
 import personas.Cliente;
 
@@ -59,7 +58,7 @@ public class Paginaweb {
     }
 
     public void realizarCompra(Compra c){
-        if(c.sePuedeComprar() && c.getMdp().pagar(c.getCompu().calcularTotal())){
+        if(c.sePuedeComprar() && c.getMdp().pagar(c.getCliente(), c.getCompu().calcularTotal())){
             compusvendidas.add(c.getCompu());
         }
     }
@@ -89,13 +88,13 @@ public class Paginaweb {
         Paginaweb p = new Paginaweb();
 
         Cliente c1 = new Cliente();
-        Cliente c2 = new Cliente("Macarena","Que tu cuerpo es pa darle alegria cosa buena",897985454);
-        Cliente c3 = new Cliente("Sebastián Fernando","Ruiz Ferrante",1178964523);
-        Cliente c4 =  new Cliente("Pepe","Factory",4);
+        Cliente c2 = new Cliente("Macarena","Que tu cuerpo es pa darle alegria cosa buena",897985454,450000);
+        Cliente c3 = new Cliente("Sebastián Fernando","Ruiz Ferrante",1178964523,5000);
+        Cliente c4 =  new Cliente("Pepe","Factory",4,67000);
 
-        Tarjeta tarj1 = new Tarjeta(50000,545855554,"Galicia");
-        Tarjeta tarj2 = new Tarjeta(100,676767676,"Santander");
-        Efectivo efectivo = new Efectivo(7500);
+        Tarjeta tarj1 = new Tarjeta(545855554,"Galicia");
+        Tarjeta tarj2 = new Tarjeta(676767676,"Santander");
+        Efectivo efectivo = new Efectivo();
 
         Componente componente1 = new Componente(5,199.99,"Fury 8GB","Kingston");
         Componente componente2 = new Componente(10,49.99,"SSD 1TB","SanDisk");
@@ -134,15 +133,15 @@ public class Paginaweb {
         compu2.addComponente(componente4);
 
 
-        Compra compra1 = new Compra(c1,tarj1,compu2);
-        Compra compra2 = new Compra(c2,tarj2,compu1);
+        Compra compra1 = c1.comprar(tarj1,compu2);
+        Compra compra2 = c2.comprar(tarj2,compu1);
 
         p.realizarCompra(compra1);
         p.realizarCompra(compra2);
 
-        compu1.calcularTotal();
+        System.out.println(compu2.calcularTotal());
 
-        p.mostrarcantDeDispositivosDeES(compu2);
+        p.mostrarcantDeDispositivosDeES(compu1);
 
         p.mostrarComponenteMasVendido();
 

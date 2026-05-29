@@ -1,14 +1,14 @@
 package organizacion.empresa.paginaweb.compras.metodoDePago;
 
+import personas.Cliente;
+
 public class Efectivo extends MetodoDePago {
-    public Efectivo(float plata) {
-        super(plata);
-    }
+    public Efectivo() {}
 
     @Override
-    public boolean pagar(double monto) {
-       if(getPlata()>=monto){
-           setPlata(getPlata()-monto);
+    public boolean pagar(Cliente c, double monto) {
+       if(c.getPlata()>=monto){
+           c.setPlata(c.getPlata()-monto);
            return true;
        }
        return false;
