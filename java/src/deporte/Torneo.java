@@ -8,7 +8,7 @@ public class Torneo {
         private ArrayList<Equipo> equipos;
         private ArrayList<Partido> fixture;
         private int dia = 1;
-        private String[] TURNOS = {"mañana", "tarde", "noche"};
+        private Turno turnos;
         public Torneo() {
             this.equipos = new ArrayList<>();
             this.fixture = new ArrayList<>();
@@ -32,7 +32,7 @@ public class Torneo {
                 for(Equipo e2: equipos){
                     if(!e1.equals(e2) && !yaHayPArtidoConEsosEquipos(e1,e2)) {
                         if(e2.esValido() && e1.esValido()){
-                            String turnoElegido = buscarTurnoComun(e2, e2);
+                            Turno turnoElegido = buscarTurnoComun(e2, e2);
                             if (turnoElegido == null) {
                                 System.out.println("Partido no programado: " + e1.getNombre() + " vs " + e2.getNombre() + " (no comparten ningún turno disponible).");
                             }
@@ -50,8 +50,8 @@ public class Torneo {
             }
         }
 
-        private String buscarTurnoComun(Equipo e1, Equipo e2) {
-            for (String turno : TURNOS) {
+        private Turno buscarTurnoComun(Equipo e1, Equipo e2) {
+            for (Turno turno : turnos.values()) {
                 if (e1.getTurnosDisponibles().contains(turno) && e2.getTurnosDisponibles().contains(turno)) {
                     return turno;
                 }

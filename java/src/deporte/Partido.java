@@ -6,7 +6,7 @@ public class Partido {
     private int dia;
     private String turno;
 
-    public Partido(Equipo equipoLocal, Equipo equipoVisitante, int dia, String turno) {
+    public Partido(Equipo equipoLocal, Equipo equipoVisitante, int dia, Turno turno) {
         this.equipoLocal = equipoLocal;
         this.equipoVisitante = equipoVisitante;
         this.dia = dia;

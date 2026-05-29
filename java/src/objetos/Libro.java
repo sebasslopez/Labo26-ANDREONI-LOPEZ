@@ -8,10 +8,10 @@ public class Libro {
     private Persona autor;
     private int isbn;
     private int paginas;
-    private String editorial;
+    private Editorial editorial;
     private Fecha fecha;
 
-    public Libro(String titulo, Persona autor, int isbn, int paginas, String editorial, Fecha fecha){
+    public Libro(String titulo, Persona autor, int isbn, int paginas, Editorial editorial, Fecha fecha){
         this.titulo = titulo;
         this.autor = autor;
         this.isbn = isbn;
@@ -19,7 +19,7 @@ public class Libro {
         this.editorial = editorial;
         this.fecha = fecha;
     }
-    public Libro(String titulo, Persona autor, int isbn, String editorial, Fecha fecha){
+    public Libro(String titulo, Persona autor, int isbn, Editorial editorial, Fecha fecha){
         this.titulo = titulo;
         this.autor = autor;
         this.isbn = isbn;
@@ -27,7 +27,7 @@ public class Libro {
         this.editorial = editorial;
         this.fecha = fecha;
     }
-    public Libro(String titulo, Persona autor, String editorial, Fecha fecha){
+    public Libro(String titulo, Persona autor, Editorial editorial, Fecha fecha){
         this.titulo = titulo;
         this.autor = autor;
         this.isbn = -1;
@@ -47,7 +47,7 @@ public class Libro {
     public void setPaginas(int paginas){
         this.paginas = paginas;
     }
-    public void setEditorial(String editorial){
+    public void setEditorial(Editorial editorial){
         this.editorial = editorial;
     }
     public void setFecha(Fecha fecha){
@@ -65,18 +65,25 @@ public class Libro {
     public int getPaginas(){
         return paginas;
     }
-    public String getEditorial(){
+    public Editorial getEditorial(){
         return editorial;
     }
     public Fecha getFecha(){
         return fecha;
     }
-    
+
+
+    public void mostrareditoriales(){
+
+        for(Editorial e : editorial.values()){
+            System.out.println(e);
+        }
+    }
     public void mostrarLibroCorto(){
-        System.out.printf("Titulo: "+titulo+" Autor: "+autor+"paginas: "+paginas+" editorial: "+editorial);
+        System.out.printf("Titulo: "+titulo+" Autor: "+autor+"paginas: "+paginas+" editorial: " +editorial.name());
     }
     public void mostrarLibroLargo(){
-        System.out.printf("Titulo: "+titulo+" Autor: "+autor+" isbn: "+ isbn+" paginas: "+paginas+" editorial: "+editorial+" Utils.Fecha: "+fecha);
+        System.out.printf("Titulo: "+titulo+" Autor: "+autor+" isbn: "+ isbn+" paginas: "+paginas+" editorial: "+editorial.name()+" Utils.Fecha: "+fecha);
     }
     public boolean esAnterior(Libro otroLibro){
         return this.fecha.menorQue(otroLibro.fecha);
