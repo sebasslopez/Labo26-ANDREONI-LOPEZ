@@ -4,7 +4,7 @@ import personas.Empleado;
 
 public class LlamadaInternacional extends Llamada {
     private String codigoPaisDestino;
-    private String franjaHoraria;
+    private FranjaHoraria franjaHoraria;
     private double costoPorMinuto;
     private double cargoInternacional;
 
@@ -20,7 +20,7 @@ public class LlamadaInternacional extends Llamada {
         return codigoPaisDestino;
     }
 
-    public String getFranjaHoraria() {
+    public FranjaHoraria getFranjaHoraria() {
         return franjaHoraria;
     }
 
@@ -35,7 +35,7 @@ public class LlamadaInternacional extends Llamada {
     public String obtenerDetalle() {
         return super.obtenerDetalle()
                 + " | Codigo pais destino: " + codigoPaisDestino
-                + " | Franja horaria destino: " + franjaHoraria
+                + " | Franja horaria destino: " + franjaHoraria.name()
                 + " | Llamada internacional ";
     }
     public int obtenerMinutosAlExteriorDe(Empleado empleado) {

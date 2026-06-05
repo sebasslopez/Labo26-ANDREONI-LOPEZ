@@ -1,13 +1,15 @@
 package personas;
 
+import organizacion.empresa.llamada.FranjaHoraria;
+
 public class Empleado extends Persona{
     private String provincia;
     private String telefono;
     private String codigoPais;
-    private String franjaHoraria;
+    private FranjaHoraria franjaHoraria;
 
     public Empleado(String nombre, String apellido, int dni, String pais,
-                    String telefono, String provincia, String codigoPais, String franjaHoraria) {
+                    String telefono, String provincia, String codigoPais, FranjaHoraria franjaHoraria) {
         super(nombre, apellido, dni, pais);
         this.telefono = telefono;
         this.provincia = provincia;
@@ -35,7 +37,7 @@ public class Empleado extends Persona{
         return codigoPais;
     }
 
-    public String getFranjaHoraria() {
+    public FranjaHoraria getFranjaHoraria() {
         return franjaHoraria;
     }
 

@@ -8,20 +8,20 @@ import java.util.ArrayList;
 public class Alumno extends Persona {
     private ArrayList<Integer> notas;
     private ArrayList<Materia> materias;
-    private String division;
+    private Division division;
 
-    public Alumno(String nombre, String apellido, Fecha fechan, String division ){
+    public Alumno(String nombre, String apellido, Fecha fechan, Division division ){
         super(nombre,apellido,fechan);
         this.notas=new ArrayList<>();
         this.materias=new ArrayList<>();
         this.division=division;
     }
 
-    public String getDivision() {
+    public Division getDivision() {
         return division;
     }
 
-    public void setDivision(String division) {
+    public void setDivision(Division division) {
         this.division = division;
     }
 

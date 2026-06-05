@@ -1,4 +1,4 @@
-package objetos;
+package edificaciones.museo;
 
 import personas.Persona;
 
@@ -6,9 +6,9 @@ public class Cuadro {
     String titulo;
     Persona pintor;
     int aniodecreacion;
-    int estadodeconservacion;
+    EstadoDeConservacion estadodeconservacion;
 
-    public Cuadro(String titulo, Persona pintor, int aniodecreacion, int estadodeconservacion) {
+    public Cuadro(String titulo, Persona pintor, int aniodecreacion, EstadoDeConservacion estadodeconservacion) {
         this.titulo = titulo;
         this.pintor = pintor;
         this.aniodecreacion = aniodecreacion;
@@ -34,13 +34,11 @@ public class Cuadro {
             aniodecreacion = a;
         }
     }
-    public int getEstadodeconservacion() {
+    public EstadoDeConservacion getEstadodeconservacion() {
         return estadodeconservacion;
     }
-    public void setEstadodeconservacion(int a) {
-        if(a <= 10 && a>=0){
-            estadodeconservacion = a;
-        }
+    public void setEstadodeconservacion(EstadoDeConservacion a) {
+        estadodeconservacion = a;
     }
 
 }

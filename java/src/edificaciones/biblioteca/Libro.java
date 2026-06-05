@@ -1,4 +1,4 @@
-package objetos;
+package edificaciones.biblioteca;
 
 import utils.Fecha;
 import personas.Persona;

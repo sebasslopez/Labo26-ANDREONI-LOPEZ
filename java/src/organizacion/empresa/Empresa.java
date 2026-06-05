@@ -1,5 +1,6 @@
 package organizacion.empresa;
 
+import organizacion.empresa.llamada.FranjaHoraria;
 import organizacion.empresa.llamada.Llamada;
 import organizacion.empresa.llamada.LlamadaInternacional;
 import organizacion.empresa.llamada.LlamadaLocal;
@@ -281,13 +282,12 @@ public class Empresa {
     public static void main(String[] args) {
         Empresa empresa = new Empresa("IPM Sistemas");
 
-        Empleado ana = new Empleado("Ana", "Lopez", 111, "Argentina", "1111", "Buenos Aires", "+54", "GMT-3");
-        Empleado juan = new Empleado("Juan", "Perez", 222, "Argentina", "2222", "Cordoba", "+54", "GMT-3");
-        Empleado maria = new Empleado("Maria", "Silva", 333, "Uruguay", "3333", "Montevideo", "+598", "GMT-3");
-        Empleado lucas = new Empleado("Lucas", "Gomez", 444, "Argentina", "4444", "Rosario", "+54", "GMT-3");
-        Empleado sofia = new Empleado("Sofia", "Martinez", 555, "Chile", "5555", "Santiago", "+56", "GMT-4");
-        Empleado carlos = new Empleado("Carlos", "Fernandez", 666, "Brasil", "6666", "Rio de Janeiro", "+55", "GMT-3");
-
+        Empleado ana = new Empleado("Ana", "Lopez", 111, "Argentina", "1111", "Buenos Aires", "+54", FranjaHoraria.GMT_MENOS3);
+        Empleado juan = new Empleado("Juan", "Perez", 222, "Argentina", "2222", "Cordoba", "+54", FranjaHoraria.GMT_MENOS3);
+        Empleado maria = new Empleado("Maria", "Silva", 333, "Uruguay", "3333", "Montevideo", "+598", FranjaHoraria.GMT_MENOS3);
+        Empleado lucas = new Empleado("Lucas", "Gomez", 444, "Argentina", "4444", "Rosario", "+54", FranjaHoraria.GMT_MENOS3);
+        Empleado sofia = new Empleado("Sofia", "Martinez", 555, "Chile", "5555", "Santiago", "+56", FranjaHoraria.GMT_MENOS4);
+        Empleado carlos = new Empleado("Carlos", "Fernandez", 666, "Brasil", "6666", "Rio de Janeiro", "+55", FranjaHoraria.GMT_MENOS3);
 
         empresa.agregarEmpleado(ana);
         empresa.agregarEmpleado(juan);
