@@ -1,4 +1,4 @@
-package organizacion.empresa.llamada;
+package empresas.PoliEmpresa.llamada;
 
 public enum FranjaHoraria {
     GMT_MENOS12,

@@ -1,4 +1,4 @@
-package organizacion.empresa.llamada;
+package empresas.PoliEmpresa.llamada;
 
 import personas.Empleado;
 

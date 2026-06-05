@@ -1,9 +1,10 @@
-package organizacion.empresa;
+package empresas.PoliEmpresa;
 
-import organizacion.empresa.llamada.FranjaHoraria;
-import organizacion.empresa.llamada.Llamada;
-import organizacion.empresa.llamada.LlamadaInternacional;
-import organizacion.empresa.llamada.LlamadaLocal;
+import empresas.Empresa;
+import empresas.PoliEmpresa.llamada.FranjaHoraria;
+import empresas.PoliEmpresa.llamada.Llamada;
+import empresas.PoliEmpresa.llamada.LlamadaInternacional;
+import empresas.PoliEmpresa.llamada.LlamadaLocal;
 import personas.Empleado;
 import transporte.Bicicleta;
 import transporte.Camion;
@@ -12,30 +13,29 @@ import transporte.Vehiculo;
 
 import java.util.ArrayList;
 
-public class Empresa {
+public class PoliEmpresa extends Empresa {
     private ArrayList<Vehiculo> vehiculo;
     private ArrayList<Empleado> empleados;
-    private String nombre;
     private ArrayList<Llamada> llamadas;
 
-    public Empresa(ArrayList<Vehiculo> vehiculo, ArrayList<Empleado> empleados) {
+    public PoliEmpresa(ArrayList<Vehiculo> vehiculo, ArrayList<Empleado> empleados) {
+        super("PoliEmpresa");
         this.vehiculo = vehiculo;
         this.empleados = empleados;
-        this.nombre = "PoliEmpresa";
         this.llamadas = new ArrayList<>();
     }
 
-    public Empresa(String nombre) {
-        this.nombre = nombre;
+    public PoliEmpresa(String nombre) {
+       super(nombre);
         this.empleados = new ArrayList<>();
         this.llamadas = new ArrayList<>();
         this.vehiculo = new ArrayList<>();
     }
 
-    public Empresa(){
+    public PoliEmpresa(){
+        super("PoliEmpresa");
         this.vehiculo = new ArrayList<>();
         this.empleados = new ArrayList<>();
-        this.nombre = "PoliEmpresa";
         this.llamadas = new ArrayList<>();
     }
 
@@ -280,7 +280,7 @@ public class Empresa {
     }
 
     public static void main(String[] args) {
-        Empresa empresa = new Empresa("IPM Sistemas");
+        PoliEmpresa poliEmpresa = new PoliEmpresa("IPM Sistemas");
 
         Empleado ana = new Empleado("Ana", "Lopez", 111, "Argentina", "1111", "Buenos Aires", "+54", FranjaHoraria.GMT_MENOS3);
         Empleado juan = new Empleado("Juan", "Perez", 222, "Argentina", "2222", "Cordoba", "+54", FranjaHoraria.GMT_MENOS3);
@@ -289,39 +289,39 @@ public class Empresa {
         Empleado sofia = new Empleado("Sofia", "Martinez", 555, "Chile", "5555", "Santiago", "+56", FranjaHoraria.GMT_MENOS4);
         Empleado carlos = new Empleado("Carlos", "Fernandez", 666, "Brasil", "6666", "Rio de Janeiro", "+55", FranjaHoraria.GMT_MENOS3);
 
-        empresa.agregarEmpleado(ana);
-        empresa.agregarEmpleado(juan);
-        empresa.agregarEmpleado(maria);
-        empresa.agregarEmpleado(lucas);
-        empresa.agregarEmpleado(sofia);
-        empresa.agregarEmpleado(carlos);
+        poliEmpresa.agregarEmpleado(ana);
+        poliEmpresa.agregarEmpleado(juan);
+        poliEmpresa.agregarEmpleado(maria);
+        poliEmpresa.agregarEmpleado(lucas);
+        poliEmpresa.agregarEmpleado(sofia);
+        poliEmpresa.agregarEmpleado(carlos);
 
         // Ana llama a Juan. Como ambos son de Argentina, se crea una LlamadaLocal.
-        empresa.registrarLlamada(ana, "2222", 5);
+        poliEmpresa.registrarLlamada(ana, "2222", 5);
 
         // Ana llama a Maria. Como son de paises distintos, se crea una LlamadaInternacional.
-        empresa.registrarLlamada(ana, "3333", 3);
+        poliEmpresa.registrarLlamada(ana, "3333", 3);
 
         // Juan llama a Sofia -> llamada internacional
-        empresa.registrarLlamada(juan, "5555", 7);
+        poliEmpresa.registrarLlamada(juan, "5555", 7);
 
         // Sofia llama a Carlos -> llamada internacional
-        empresa.registrarLlamada(sofia, "6666", 4);
+        poliEmpresa.registrarLlamada(sofia, "6666", 4);
 
         // Carlos llama a Maria -> llamada internacional
-        empresa.registrarLlamada(carlos, "3333", 8);
+        poliEmpresa.registrarLlamada(carlos, "3333", 8);
 
         // Maria llama a Lucas -> llamada internacional
-        empresa.registrarLlamada(maria, "4444", 6);
+        poliEmpresa.registrarLlamada(maria, "4444", 6);
 
         // No se registra porque el numero no pertenece a ningun empleado cargado.
-        boolean seRegistro = empresa.registrarLlamada(ana, "9999", 10);
+        boolean seRegistro = poliEmpresa.registrarLlamada(ana, "9999", 10);
         System.out.println("Se registro la llamada al 9999? " + seRegistro);
         System.out.println();
 
-        empresa.mostrarTodasLasLlamadas();
-        empresa.mostrarLlamadasDe(ana);
+        poliEmpresa.mostrarTodasLasLlamadas();
+        poliEmpresa.mostrarLlamadasDe(ana);
 
-        empresa.mostrarRankingEmpleadosQueMasTiempoLlamaronAlExterior();
+        poliEmpresa.mostrarRankingEmpleadosQueMasTiempoLlamaronAlExterior();
     }
 }
