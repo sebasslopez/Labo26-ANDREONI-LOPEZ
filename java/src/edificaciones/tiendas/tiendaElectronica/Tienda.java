@@ -1,7 +1,9 @@
 package edificaciones.tiendas.tiendaElectronica;
 
 import electro.Cargador;
+import electro.multimedia.Calidad;
 import electro.multimedia.EquiposDeSonido;
+import electro.multimedia.Televisor;
 
 import java.util.ArrayList;
 
@@ -56,10 +58,21 @@ public class Tienda {
 
     static void main() {
         Tienda t = new Tienda();
-        EquiposDeSonido prod1 = new EquiposDeSonido("Parlante re epico xd lol",0.1,15, Seccion.MULTIMEDIA);
+        EquiposDeSonido prod1 = new EquiposDeSonido("Parlante re epico xd lol",0.1,15, Seccion.MULTIMEDIA,true);
         ProductoElectronico prod2 = new ProductoElectronico("Cargador six seven watts",4558.99,10,Seccion.CARGADORES);
         Cargador prod3 = new Cargador("un cargador samsung no tan bueno :(",4.99,35,Seccion.CARGADORES,100);
+        Televisor prod4 = new Televisor("tung tung tv",149.99,23,Seccion.MULTIMEDIA, Calidad.FULL_HD);
 
+        t.agregarProducto(prod1);
+        t.agregarProducto(prod2);
+        t.agregarProducto(prod3);
+        t.agregarProducto(prod4);
+
+        t.mostrarProductosDeSeccion(Seccion.MULTIMEDIA);
+        t.mostrarProductosDeSeccion(Seccion.CARGADORES);
+
+        t.tenerProductoMayorStock();
+        t.tenerProductoMenorStock();
 
     }
 }
