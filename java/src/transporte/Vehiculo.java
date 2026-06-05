@@ -3,7 +3,7 @@ package transporte;
 public class Vehiculo {
     private String marca;
     private String modelo;
-    private String color;
+    private Color color;
     private int cantruedas;
     private int anio;
     private int patente;
@@ -24,11 +24,11 @@ public class Vehiculo {
         this.modelo = modelo;
     }
 
-    public String getColor() {
+    public Color getColor() {
         return color;
     }
 
-    public void setColor(String color) {
+    public void setColor(Color color) {
         this.color = color;
     }
 
@@ -56,7 +56,7 @@ public class Vehiculo {
         this.patente = patente;
     }
 
-    public Vehiculo(String marca, String modelo, String color, int patente, int anio, int cantruedas) {
+    public Vehiculo(String marca, String modelo, Color color, int patente, int anio, int cantruedas) {
         this.marca = marca;
         this.modelo = modelo;
         this.color = color;
@@ -65,7 +65,7 @@ public class Vehiculo {
         this.cantruedas = cantruedas;
     }
 
-    public Vehiculo(String modelo, String marca, String color, int cantruedas, int anio) {
+    public Vehiculo(String modelo, String marca, Color color, int cantruedas, int anio) {
         this.modelo = modelo;
         this.marca = marca;
         this.color = color;

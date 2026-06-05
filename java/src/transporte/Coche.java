@@ -4,7 +4,7 @@ public class Coche extends Vehiculo {
     private int velocidad;
     private boolean descapotable= false;
 
-    public Coche(String marca, String modelo, String color, int patente, int anio, int cantruedas, int velocidad, boolean descapotable) {
+    public Coche(String marca, String modelo, Color color, int patente, int anio, int cantruedas, int velocidad, boolean descapotable) {
         super(marca, modelo, color, patente, anio, cantruedas);
         this.velocidad = velocidad;
         this.descapotable = descapotable;
@@ -50,9 +50,9 @@ public class Coche extends Vehiculo {
    }
 
     public static void main(String[] args) {
-        Coche coche= new Coche("Audi","R8","Blanco", 486869849, 2024, 4, 135,false);
-        Coche coche2= new Coche("Audi","TT","negro",894922023,2023,4,124,true);
-        Coche coche3= new Coche("Audi","A1","gris",645458686,2025,4,110,false);
+        Coche coche= new Coche("Audi","R8",Color.BLANCO, 486869849, 2024, 4, 135,false);
+        Coche coche2= new Coche("Audi","TT",Color.NEGRO,894922023,2023,4,124,true);
+        Coche coche3= new Coche("Audi","A1",Color.GRIS,645458686,2025,4,110,false);
         System.out.println(coche.vel());
 
     }

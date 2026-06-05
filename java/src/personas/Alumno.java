@@ -1,6 +1,6 @@
 package personas;
 
-import organizacion.colegio.Materia;
+import edificaciones.colegio.Materia;
 import utils.Fecha;
 
 import java.util.ArrayList;

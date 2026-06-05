@@ -1,6 +1,6 @@
 package personas;
 
-import decoracion.Cuadro;
+import objetos.Cuadro;
 
 public class Restaurador extends Persona{
     private int aniosdeexp;

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class Equipo {
     private String nombre;
     private ArrayList<Jugador> jugadores;
-    private ArrayList<String> turnosDisponibles;
+    private ArrayList<Turno> turnosDisponibles;
     private Jugador capitan;
     public Equipo(String nombre) {
         this.nombre = nombre;
@@ -23,12 +23,12 @@ public class Equipo {
     public ArrayList<Jugador> getJugadores() {
         return jugadores;
     }
-    public void agregarTurno(String turno) {
-        if ((turno.equalsIgnoreCase("mañana") || turno.equalsIgnoreCase("tarde") || turno.equalsIgnoreCase("noche")) && !turnosDisponibles.contains(turno)) {
+    public void agregarTurno(Turno turno) {
+        if ((turno == Turno.MAÑANA || turno == Turno.TARDE || turno == Turno.NOCHE) && !turnosDisponibles.contains(turno)) {
             turnosDisponibles.add(turno);
         }
     }
-    public ArrayList<String> getTurnosDisponibles() {
+    public ArrayList<Turno> getTurnosDisponibles() {
         return turnosDisponibles;
     }
     public boolean esValido() {

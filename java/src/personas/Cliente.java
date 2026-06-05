@@ -1,8 +1,8 @@
 package personas;
 
-import electrodomesticos.Computadora;
-import organizacion.empresa.paginaweb.compras.Compra;
-import organizacion.empresa.paginaweb.compras.metodoDePago.MetodoDePago;
+import electro.Computadora;
+import edificaciones.tiendas.paginaweb.compras.Compra;
+import edificaciones.tiendas.paginaweb.compras.metodoDePago.MetodoDePago;
 
 public class Cliente extends Persona {
     private int tel;

@@ -96,8 +96,8 @@ public class Torneo {
             equipoA.agregarJugador(new Jugador("Valeria",  "Torres",    new Fecha(9,  9,  2003), 9));
             equipoA.agregarJugador(new Jugador("Marcos",   "Flores",    new Fecha(10, 10, 2000), 10));
             equipoA.agregarJugador(new Jugador("Julia",    "Díaz",      new Fecha(11, 11, 2002), 11));
-            equipoA.agregarTurno("mañana");
-            equipoA.agregarTurno("tarde");
+            equipoA.agregarTurno(Turno.MAÑANA);
+            equipoA.agregarTurno(Turno.TARDE);
             Equipo equipoB = new Equipo("Curling B");
             equipoB.agregarJugador(new Jugador("Roberto",  "Vargas",    new Fecha(12, 12, 2001), 1));
             equipoB.agregarJugador(new Jugador("Elena",    "Moreno",    new Fecha(13, 1,  2002), 2));
@@ -110,8 +110,8 @@ public class Torneo {
             equipoB.agregarJugador(new Jugador("Gonzalo",  "Méndez",    new Fecha(20, 8,  2001), 9));
             equipoB.agregarJugador(new Jugador("Beatriz",  "Castro",    new Fecha(21, 9,  2002), 10));
             equipoB.agregarJugador(new Jugador("Ignacio",  "Ortega",    new Fecha(22, 10, 2000), 11));
-            equipoB.agregarTurno("tarde");
-            equipoB.agregarTurno("noche");
+            equipoB.agregarTurno(Turno.TARDE);
+            equipoB.agregarTurno(Turno.NOCHE);
             Equipo equipoC = new Equipo("Curling C");
             equipoC.agregarJugador(new Jugador("Hugo",     "Blanco",    new Fecha(1,  1,  1999), 1));
             equipoC.agregarJugador(new Jugador("Rosa",     "Navarro",   new Fecha(2,  2,  2000), 2));
@@ -124,8 +124,8 @@ public class Torneo {
             equipoC.agregarJugador(new Jugador("Arturo",   "Peña",      new Fecha(9,  9,  1999), 9));
             equipoC.agregarJugador(new Jugador("Marta",    "Iglesias",  new Fecha(10, 10, 2000), 10));
             equipoC.agregarJugador(new Jugador("Emilio",   "Santos",    new Fecha(11, 11, 2001), 11));
-            equipoC.agregarTurno("mañana");
-            equipoC.agregarTurno("noche");
+            equipoC.agregarTurno(Turno.MAÑANA);
+            equipoC.agregarTurno(Turno.NOCHE);
             Torneo campeonato = new Torneo();
             campeonato.agregarEquipo(equipoA);
             campeonato.agregarEquipo(equipoB);

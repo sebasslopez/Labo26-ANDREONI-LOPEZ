@@ -4,7 +4,7 @@ public class Partido {
     private Equipo equipoLocal;
     private Equipo equipoVisitante;
     private int dia;
-    private String turno;
+    private Turno turno;
 
     public Partido(Equipo equipoLocal, Equipo equipoVisitante, int dia, Turno turno) {
         this.equipoLocal = equipoLocal;
@@ -16,8 +16,8 @@ public class Partido {
     public Equipo getEquipoLocal() { return equipoLocal; }
     public Equipo getEquipoVisitante() { return equipoVisitante; }
     public int getDia() { return dia; }
-    public String getTurno() { return turno; }
+    public Turno getTurno() { return turno; }
     public String mostrarPartido(){
-        return "Equipo Local: "+equipoLocal.getNombre()+", Equipo Visitante: "+equipoVisitante.getNombre()+", Dia: "+dia+", Turno: "+turno;
+        return "Equipo Local: "+equipoLocal.getNombre()+", Equipo Visitante: "+equipoVisitante.getNombre()+", Dia: "+dia+", Turno: "+turno.name();
     }
 }

@@ -4,7 +4,7 @@ public class Submarino extends Vehiculo {
     private String nombre;
     private int profundidadmax;
     private int profundidadactual;
-    public Submarino(String nombre, int profundidadmax,String modelo, String marca, String colo, int anio) {
+    public Submarino(String nombre, int profundidadmax,String modelo, String marca, Color colo, int anio) {
         super(modelo,marca,colo,0,anio);
         this.nombre = nombre;
         this.profundidadmax = profundidadmax;
