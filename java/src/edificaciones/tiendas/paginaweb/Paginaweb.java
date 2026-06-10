@@ -6,6 +6,7 @@ import electro.componentes.Componente;
 import electro.componentes.dispositivo.entrada.Mouse;
 import electro.componentes.dispositivo.entrada.Teclado;
 import electro.componentes.dispositivo.salida.Impresora;
+import electro.componentes.dispositivo.salida.MetodoDeImpresion;
 import electro.componentes.dispositivo.salida.Pantalla;
 import edificaciones.tiendas.paginaweb.compras.Compra;
 import edificaciones.tiendas.paginaweb.compras.metodoDePago.Efectivo;
@@ -106,7 +107,7 @@ public class Paginaweb {
         Mouse mouse = new Mouse(40,5.00,"G509","LOGITECH",1,"USB");
         Teclado teclado = new Teclado(20,5.00,"Horus k618","REDRAGON",1,"USB");
 
-        Impresora impresora = new Impresora(5,150.99,"J508","HP",1,"laser");
+        Impresora impresora = new Impresora(5,150.99,"J508","HP",1, MetodoDeImpresion.LASER);
         Pantalla pantalla = new Pantalla(12,35.99,"LM751845J","SAMSUNG",1);
 
         Computadora compu1 = new Computadora();

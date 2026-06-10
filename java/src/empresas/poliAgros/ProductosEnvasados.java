@@ -69,4 +69,12 @@ public class ProductosEnvasados {
     }
 
 
+  public String obtenerinfo (){
+        return "numero lote: "+ nlote+ "codigo id: "+ codigo;
+  }
+
+
+  public String infonutricional (){
+        return "tabla nutricional: calorias: 5  azucar:5g";
+  }
 }

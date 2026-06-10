@@ -31,7 +31,7 @@ public class Computadora {
     public double calcularTotal(){
         double total = 0;
         for(Componente c : componentes){
-            total += c.getPrecioventa();
+            total += c.getPrecio();
         }
         return total;
     }
