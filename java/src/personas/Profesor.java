@@ -1,18 +1,23 @@
 package personas;
 
 public class Profesor extends Persona{
-private int porcentajeDescu;
+    private static int porcentajeDescu;
 
-    public Profesor(String nombre, String apellido, int porcentajeDescu) {
+    public Profesor(String nombre, String apellido, int p) {
         super(nombre, apellido);
-        this.porcentajeDescu = porcentajeDescu;
+        porcentajeDescu = p;
+    }
+
+    @Override
+    public String datos() {
+        return "";
     }
 
     public int getPorcentajeDescu() {
         return porcentajeDescu;
     }
 
-    public void setPorcentajeDescu(int porcentajeDescu) {
-        this.porcentajeDescu = porcentajeDescu;
+    public void setPorcentajeDescu(int p) {
+        porcentajeDescu = p;
     }
 }

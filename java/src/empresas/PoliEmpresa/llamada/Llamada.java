@@ -4,7 +4,7 @@ import personas.Empleado;
 
 import java.time.LocalDateTime;
 
-public class Llamada {
+public abstract class Llamada {
     private Empleado origen;
     private Empleado destino;
     private LocalDateTime fecha;

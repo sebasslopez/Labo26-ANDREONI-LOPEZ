@@ -44,4 +44,9 @@ public class Empleado extends Persona{
     public boolean tieneTelefono(String telefono) {
         return this.telefono.equals(telefono);
     }
+
+    @Override
+    public String datos() {
+        return "";
+    }
 }

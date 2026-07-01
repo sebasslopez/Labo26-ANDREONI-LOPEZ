@@ -2,7 +2,7 @@ package empresas.poliAgros;
 
 import utils.Fecha;
 
-public class ProductosEnvasados {
+public abstract class ProductosEnvasados {
     private Fecha fechaven;
     private int nlote;
     private String nombre;

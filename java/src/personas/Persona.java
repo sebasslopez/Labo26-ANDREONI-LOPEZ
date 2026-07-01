@@ -2,7 +2,7 @@ package personas;
 
 import utils.Fecha;
 
-public class Persona {
+public abstract class Persona {
     private String nombre;
     private String apellido;
     private String direccion;
@@ -121,9 +121,7 @@ public class Persona {
         this.pais = pais;
     }
 
-    public String datos() {
-        return "Nombre:" + nombre + " " + apellido + " Edad:" + getEdad() + " Dirección:" + direccion +" DNI: "+dni;
-    }
+    public abstract String datos();
 
     public String getNombreCompleto(){
         return nombre + " " + apellido;
@@ -137,10 +135,5 @@ public class Persona {
         return this.pais.equalsIgnoreCase(otraPersona.getPais());
     }
 
-    public static void main(String[] args) {
-        Persona persona = new Persona("Raquel", "Constituyentes 5848",new Fecha() );
-        System.out.println(persona.datos());
-
-    }
 }
 

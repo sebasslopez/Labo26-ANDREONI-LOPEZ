@@ -81,7 +81,7 @@ public class Fecha {
         LocalDate f = LocalDate.of(fecha.dia,fecha.mes,fecha.anio);
         return f.isAfter(LocalDate.of(anio,mes,dia));
     }
-    public int diaMes(int mes){
+    public static int diaMes(int mes){
         int[] diasM = {31,28,31,30,31,30,31,31,30,31,30,31};
         return diasM[mes-1];
     }

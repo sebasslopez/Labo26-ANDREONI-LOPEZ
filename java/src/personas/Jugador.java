@@ -11,4 +11,9 @@ public class Jugador extends Persona{
     }
 
     public int getNumCamiseta() { return numCamiseta; }
+
+    @Override
+    public String datos() {
+        return "";
+    }
 }

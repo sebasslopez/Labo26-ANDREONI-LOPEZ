@@ -1,6 +1,6 @@
 package edificaciones.edificio.sistemaAlarmas;
 
-public class Elemento {
+public abstract class Elemento {
     private boolean conectado;
     private float medida;
     private float umbral;
@@ -45,6 +45,5 @@ public class Elemento {
         this.anio = anio;
     }
 
-    public void dispararAlarma(){
-    }
+    public abstract void dispararAlarma();
 }

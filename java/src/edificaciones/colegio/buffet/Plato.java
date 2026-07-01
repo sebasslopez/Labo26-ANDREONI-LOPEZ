@@ -1,5 +1,7 @@
 package edificaciones.colegio.buffet;
 
+import java.util.ArrayList;
+
 public class Plato {
     private String nombre;
     private int precio;

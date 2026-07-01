@@ -13,6 +13,11 @@ public class Cliente extends Persona {
         this.plata = 50000;
     }
 
+    @Override
+    public String datos() {
+        return "";
+    }
+
     public Cliente(int tel){
         super();
         this.tel = tel;

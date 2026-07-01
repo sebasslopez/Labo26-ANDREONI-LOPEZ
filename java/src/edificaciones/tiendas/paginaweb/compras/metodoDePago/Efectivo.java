@@ -13,5 +13,9 @@ public class Efectivo extends MetodoDePago {
        }
        return false;
     }
+    @Override
+    public double calcularRecargo(double subtotal){
+        return subtotal;
+    }
 
 }

@@ -2,7 +2,7 @@ package transporte;
 
 public class Coche extends Vehiculo {
     private int velocidad;
-    private boolean descapotable= false;
+    private boolean descapotable;
 
     public Coche(String marca, String modelo, Color color, int patente, int anio, int cantruedas, int velocidad, boolean descapotable) {
         super(marca, modelo, color, patente, anio, cantruedas);

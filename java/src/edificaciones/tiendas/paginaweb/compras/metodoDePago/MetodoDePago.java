@@ -2,16 +2,12 @@ package edificaciones.tiendas.paginaweb.compras.metodoDePago;
 
 import personas.Cliente;
 
-public class MetodoDePago {
+public abstract class MetodoDePago {
     public MetodoDePago() {}
 
-    public boolean pagar(Cliente c, double monto){
-        return false;
-    }
+    public abstract boolean pagar(Cliente c, double monto);
 
-    public double calcularRecargo(double subtotal) {
-        return 0;
-    }
+    public abstract double calcularRecargo(double subtotal);
 
     public double calcularTotal(double subtotal) {
         return subtotal + calcularRecargo(subtotal);

@@ -30,12 +30,10 @@ public Cancion(String autor, String titulo){
         this.titulo = titulo;
     }
     public String sautor(){
-        String nm= "nombre autor:"+autor;
-        return nm;
+        return "nombre autor:"+autor;
     }
     public String stitulo(){
-       String tl= "titulo de la canción:"+titulo;
-        return tl;
+        return "titulo de la canción:"+titulo;
 }
     public static void main(String[] args) {
     Cancion cancion =new Cancion("Zara Larsson","Midnight Sun");

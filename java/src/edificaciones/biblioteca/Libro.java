@@ -73,23 +73,22 @@ public class Libro {
     }
 
 
-    public void mostrareditoriales(){
-
-        for(Editorial e : editorial.values()){
+    public static void mostrareditoriales(){
+        for(Editorial e : Editorial.values()){
             System.out.println(e);
         }
     }
     public void mostrarLibroCorto(){
-        System.out.printf("Titulo: "+titulo+" Autor: "+autor+"paginas: "+paginas+" editorial: " +editorial.name());
+        System.out.printf("Titulo: "+titulo+" Autor: "+autor+" paginas: "+paginas+" editorial: " +editorial.name());
     }
     public void mostrarLibroLargo(){
-        System.out.printf("Titulo: "+titulo+" Autor: "+autor+" isbn: "+ isbn+" paginas: "+paginas+" editorial: "+editorial.name()+" Utils.Fecha: "+fecha);
+        System.out.printf("Titulo: "+titulo+" Autor: "+autor+" isbn: "+ isbn+" paginas: "+paginas+" editorial: "+editorial.name()+" Fecha: "+fecha.corta());
     }
     public boolean esAnterior(Libro otroLibro){
         return this.fecha.menorQue(otroLibro.fecha);
     }
 
     public static void main(String[] args) {
-
+        //que buen main UwU
     }
 }

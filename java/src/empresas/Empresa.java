@@ -1,6 +1,6 @@
 package empresas;
 
-public class Empresa {
+public abstract class Empresa {
     private String nombre;
 
     public Empresa(String nombre) {

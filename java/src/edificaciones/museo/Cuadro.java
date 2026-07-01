@@ -3,10 +3,10 @@ package edificaciones.museo;
 import personas.Persona;
 
 public class Cuadro {
-    String titulo;
-    Persona pintor;
-    int aniodecreacion;
-    EstadoDeConservacion estadodeconservacion;
+    private String titulo;
+    private Persona pintor;
+    private int aniodecreacion;
+    private EstadoDeConservacion estadodeconservacion;
 
     public Cuadro(String titulo, Persona pintor, int aniodecreacion, EstadoDeConservacion estadodeconservacion) {
         this.titulo = titulo;

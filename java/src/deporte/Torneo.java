@@ -8,10 +8,9 @@ public class Torneo {
         private ArrayList<Equipo> equipos;
         private ArrayList<Partido> fixture;
         private int dia = 1;
-        private Turno turnos;
         public Torneo() {
-            this.equipos = new ArrayList<>();
-            this.fixture = new ArrayList<>();
+            equipos = new ArrayList<>();
+            fixture = new ArrayList<>();
         }
         public void agregarEquipo(Equipo equipo) {
             equipos.add(equipo);
@@ -51,7 +50,7 @@ public class Torneo {
         }
 
         private Turno buscarTurnoComun(Equipo e1, Equipo e2) {
-            for (Turno turno : turnos.values()) {
+            for (Turno turno : Turno.values()) {
                 if (e1.getTurnosDisponibles().contains(turno) && e2.getTurnosDisponibles().contains(turno)) {
                     return turno;
                 }

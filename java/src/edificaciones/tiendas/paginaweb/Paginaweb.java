@@ -96,11 +96,6 @@ public class Paginaweb {
         Tarjeta tarj2 = new Tarjeta(676767676,"Santander");
         Efectivo efectivo = new Efectivo();
 
-        Componente componente1 = new Componente(5,199.99,"Fury 8GB","Kingston");
-        Componente componente2 = new Componente(10,49.99,"SSD 1TB","SanDisk");
-        Componente componente3 = new Componente(8,499.99,"RTX 3080","Nvidia");
-        Componente componente4 = new Componente(15,15.99,"HHD 3TB","Kingston");
-
         CPU cpu = new CPU(25,13.99,"I9","INTEL");
         CPU cpu2 = new CPU(30,10.99,"Ryzen 7","AMD");
 
@@ -112,11 +107,6 @@ public class Paginaweb {
 
         Computadora compu1 = new Computadora();
         Computadora compu2 = new Computadora();
-
-        p.addComponente(componente1);
-        p.addComponente(componente2);
-        p.addComponente(componente3);
-        p.addComponente(componente4);
         p.addComponente(cpu);
         p.addComponente(cpu2);
         p.addComponente(mouse);
@@ -124,13 +114,11 @@ public class Paginaweb {
         p.addComponente(impresora);
         p.addComponente(pantalla);
 
-        compu1.addComponente(componente1);
         compu1.addComponente(cpu2);
         compu1.addComponente(mouse);
         compu1.addComponente(impresora);
 
         compu2.addComponente(cpu);
-        compu2.addComponente(componente4);
 
 
         Compra compra1 = c1.comprar(tarj1,compu2);

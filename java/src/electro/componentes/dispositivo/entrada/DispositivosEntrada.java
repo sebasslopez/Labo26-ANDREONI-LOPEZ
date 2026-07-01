@@ -2,7 +2,7 @@ package electro.componentes.dispositivo.entrada;
 
 import electro.componentes.Componente;
 
-public class DispositivosEntrada extends Componente {
+public abstract class DispositivosEntrada extends Componente {
     private String tipoconector;
     private int cantpuertos;
 
@@ -29,4 +29,13 @@ public class DispositivosEntrada extends Componente {
     }
 
 
+    @Override
+    public boolean esDispDeEntrada() {
+        return true;
+    }
+
+    @Override
+    public boolean esDispDeSalida() {
+        return false;
+    }
 }

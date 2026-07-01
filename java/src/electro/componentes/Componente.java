@@ -3,8 +3,9 @@ package electro.componentes;
 import edificaciones.tiendas.tiendaElectronica.Producto;
 import electro.componentes.dispositivo.entrada.DispositivosEntrada;
 import electro.componentes.dispositivo.salida.DispositivosSalida;
+import org.w3c.dom.ls.LSOutput;
 
-public class Componente extends Producto {
+public abstract class Componente extends Producto {
     private String nomfab;
 
 
@@ -21,13 +22,9 @@ public class Componente extends Producto {
         this.nomfab = nomfab;
     }
 
-    public boolean esDispDeEntrada(){
-        return this instanceof DispositivosEntrada;
-    }
+    public abstract boolean esDispDeEntrada();
 
-    public boolean esDispDeSalida(){
-        return this instanceof DispositivosSalida;
-    }
+    public abstract boolean esDispDeSalida();
 
     public String mostrarNombreYModelo(){
         return nomfab + " " +mostrarNombre();

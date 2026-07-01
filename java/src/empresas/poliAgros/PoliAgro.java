@@ -3,28 +3,28 @@ package empresas.poliAgros;
 import empresas.Empresa;
 import utils.Fecha;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 
 public class PoliAgro extends Empresa {
-    private ArrayList<ProductosEnvasados> productos;
+    private static ArrayList<ProductosEnvasados> productos;
 
-    public PoliAgro(String nombre, ArrayList<ProductosEnvasados> productos) {
-        super(nombre);
-        this.productos = productos;
+    public PoliAgro() {
+        super("PoliAgro");
+        productos = new ArrayList<>();
     }
 
     public ArrayList<ProductosEnvasados> getProductos() {
         return productos;
     }
 
-    public void setProductos(ArrayList<ProductosEnvasados> productos) {
-        this.productos = productos;
+    public void setProductos(ArrayList<ProductosEnvasados> prods) {
+        productos = prods;
     }
 
     public void agregarpr (ProductosEnvasados pe){
         productos.add(pe);
     }
+
     public int lote(){
        ProductosEnvasados masreciente = productos.get(0);
        for(ProductosEnvasados p : productos){
@@ -52,7 +52,7 @@ public class PoliAgro extends Empresa {
     }
 
 static void main() {
-        PoliAgro p = new PoliAgro("lalaal",new ArrayList<>());
+        PoliAgro p = new PoliAgro();
     Fecha f = new Fecha(4, 8, 26);
     Productofres pf = new Productofres(f, new Fecha(5, 9, 27), PaisOG.ARGENTINA, 885858, "xele", 546465);
     Productofres pf2 = new Productofres(f, new Fecha(25, 9, 27), PaisOG.BRASIL, 888968, "ricota", 556888);
