@@ -31,8 +31,19 @@ public class plataformaDeRecetas {
 
     public ArrayList<PlatoReceta> filtrarRecetas(PlatoReceta p){
       return p.platotipo(recetas);
+      //se puede hacer con un enum con principal,postre y entrada.
+        // el metodo recibe un valor del enum, recorrer recetas y preguntar si el tipo es el mismo que el q pasaron.
+        // a los que sean de ese tipo, los guarda en un arraylist.
+        //recetas tendria un metodo que se sobrescribe en cada clase hija con el tipo q es.
     }
 
 
     public int cantRecetas(){return recetas.size(); }
+
+    public PlatoReceta recetaConMasPasos (){
+        PlatoReceta recetamaspasos = recetas.get(0);
+        for(PlatoReceta p : recetas){
+            if()
+        }
+    }
 }

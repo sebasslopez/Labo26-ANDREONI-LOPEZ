@@ -67,4 +67,11 @@ public boolean esEntrada(){
 public boolean esPostre(){
         return false;
     }
+
+    public int cantPasos (){
+    return pasos.size();
+    }
+
+    public boolean masPasosQue (PlatoReceta p){
+    }
 }
