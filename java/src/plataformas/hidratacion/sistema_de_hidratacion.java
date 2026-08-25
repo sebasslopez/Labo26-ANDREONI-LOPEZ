@@ -7,19 +7,33 @@ import java.util.ArrayList;
 public class sistema_de_hidratacion {
 
     private ArrayList<Bebedor> bebedores;
-    private int coeficienteH;
 
-
-    public sistema_de_hidratacion(ArrayList<Bebedor> bebedores) {
-        this.bebedores = bebedores;
+    public sistema_de_hidratacion() {
+        this.bebedores = new ArrayList<>();
     }
-     public void porcentajehidratacion(){
-        for(Bebedor b: bebedores){
-            int coeficiente=0;
-            for(Bebida be : b.getBebidas()){
-                coeficiente= (b.getCantidad().get(b.getBebidas().indexOf(be))  *(be.getCoeficienteP()-be.getCoeficienteN()));
-            }
+
+    public void anadirBebedor(Bebedor b){
+        bebedores.add(b);
+    }
+
+    public void removerBebedor(Bebedor b){
+        bebedores.remove(b);
+    }
+
+    public Bebedor obtenerMejorCoef(){
+        Bebedor mayor = bebedores.getFirst();
+        for(Bebedor b : bebedores){
+            if(mayor.calcularCoefHidratacion() < b.calcularCoefHidratacion()) mayor = b;
         }
-     }
+        return mayor;
+    }
+
+    public Bebedor obtenerPeorCoef(){
+        Bebedor menor = bebedores.getFirst();
+        for(Bebedor b : bebedores){
+            if(b.calcularCoefHidratacion() < menor.calcularCoefHidratacion()) menor = b;
+        }
+        return menor;
+    }
 
 }
