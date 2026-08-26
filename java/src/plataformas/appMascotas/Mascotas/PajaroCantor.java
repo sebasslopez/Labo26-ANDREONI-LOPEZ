@@ -8,6 +8,11 @@ public class PajaroCantor extends Pajaro{
         super(nombre, dueno);
         this.canto = canto;
     }
+
+    public void agregarCanto(String canto){
+        this.canto = canto;
+    }
+
     @Override
     public String getSonido() {
         return canto;

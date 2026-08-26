@@ -24,10 +24,10 @@ public class App {
         if(mascotas.contains(m)) mascotas.set(mascotas.indexOf(m),mascotaModificada);
     }
 
-    public void darDeAlta(Persona dueno, String mascota, TipoMascota tipo){
+    public Mascota darDeAlta(Persona dueno, String mascota, TipoMascota tipo){
         if(obtenerMacotaPorNombre(mascota) != null){
             System.out.println("Ya hay una mascota con ese nombre.");
-            return;
+            return null;
         }
         Mascota m = switch (tipo){
             case GATO -> new Gato(mascota,dueno);
@@ -37,6 +37,7 @@ public class App {
             case PEZ -> new Pez(mascota,dueno);
         };
         mascotas.add(m);
+        return m;
     }
 
     public void saludar(String dueno,String mascota){
