@@ -2,7 +2,7 @@ package plataformas.appMascotas.Mascotas;
 
 import personas.Persona;
 
-public abstract class Pajaro extends Mascota{
+public abstract class Pajaro extends MascotaConAlegria{
     public Pajaro(String nombre, Persona dueno) {
         super(nombre, dueno);
     }

@@ -5,12 +5,12 @@ import personas.Persona;
 public abstract class Mascota {
     private String nombre;
     private Persona dueno;
-    private int alegria;
 
     public Mascota(String nombre,Persona dueno){
         this.dueno = dueno;
         this.nombre = nombre;
     }
+
     public Persona getDueno() {
         return dueno;
     }
@@ -27,14 +27,7 @@ public abstract class Mascota {
         this.nombre = nombre;
     }
 
-    public void saludar(String dueno){
-        for(int i = 0;i<alegria;i++){
-            System.out.println(esSuDueño(dueno)? getSonido() : getSonido().toUpperCase()+"!" );
-        }
-        if(alegria > 1){
-            alegria--;
-        }
-    }
+    public abstract void saludar(String dueno);
 
     public boolean esDeEseTipo(TipoMascota tipo) {
         return tipo.equals(getTipo());
@@ -54,12 +47,8 @@ public abstract class Mascota {
 
     public abstract TipoMascota getTipo();
 
-    public boolean hayQueEliminar(){
-        return false;
-    }
+    public abstract boolean hayQueEliminar();
 
-    public void alimentar(){
-        alegria++;
-    }
+    public abstract void alimentar();
 
 }
