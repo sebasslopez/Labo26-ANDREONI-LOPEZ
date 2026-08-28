@@ -16,8 +16,7 @@ public class Medidor extends Persona {
         return mediciones.get(fecha);
     }
 
-    public double promPeso(LocalDate f) {
-    }
+
 
 
 }

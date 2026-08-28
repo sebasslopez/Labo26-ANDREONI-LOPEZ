@@ -3,7 +3,8 @@ package plataformas.sistMedicion;
 public class Medicion {
 
     private int peso;
-    private int altura;
+    private int alt;
+
 
     public Medicion (int peso, int altura){
         this.peso = peso;
