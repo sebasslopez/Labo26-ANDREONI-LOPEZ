@@ -12,6 +12,7 @@ public class Sistema_de_medicion {
     public Sistema_de_medicion(){
         HashSet<Medidor>personas= new HashSet<>();
 
+
     }
 
 
