@@ -3,7 +3,7 @@ package plataformas.sistMedicion;
 public class Medicion {
 
     private int peso;
-    private int alt;
+    private int altura;
 
 
     public Medicion (int peso, int altura){
