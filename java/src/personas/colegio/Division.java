@@ -1,4 +1,4 @@
-package personas;
+package personas.colegio;
 
 public enum Division {
     PRIMERO,

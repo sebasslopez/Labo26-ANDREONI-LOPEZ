@@ -1,6 +1,6 @@
 package edificaciones.colegio;
 
-import personas.Alumno;
+import personas.colegio.Alumno;
 
 import java.util.ArrayList;
 

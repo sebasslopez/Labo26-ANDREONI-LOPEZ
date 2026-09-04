@@ -1,6 +1,6 @@
 package empresas.PoliEmpresa.llamada;
 
-import personas.Empleado;
+import personas.empleados.EmpleadoSinAsistencia;
 
 public class LlamadaInternacional extends Llamada {
     private String codigoPaisDestino;
@@ -8,7 +8,7 @@ public class LlamadaInternacional extends Llamada {
     private double costoPorMinuto;
     private double cargoInternacional;
 
-    public LlamadaInternacional(Empleado origen, Empleado destino, int duracionMinutos) {
+    public LlamadaInternacional(EmpleadoSinAsistencia origen, EmpleadoSinAsistencia destino, int duracionMinutos) {
         super(origen, destino, duracionMinutos);
         this.codigoPaisDestino = destino.getCodigoPais();
         this.franjaHoraria = destino.getFranjaHoraria();
@@ -38,7 +38,7 @@ public class LlamadaInternacional extends Llamada {
                 + " | Franja horaria destino: " + franjaHoraria.name()
                 + " | Llamada internacional ";
     }
-    public int obtenerMinutosAlExteriorDe(Empleado empleado) {
+    public int obtenerMinutosAlExteriorDe(EmpleadoSinAsistencia empleado) {
         if (fueRealizadaPor(empleado)) {
             return getDuracionMinutos();
         }

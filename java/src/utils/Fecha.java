@@ -14,6 +14,13 @@ public class Fecha {
         this.anio = anio;
         valida();
     }
+
+    public Fecha(LocalDate date){
+        this.dia = date.getDayOfMonth();
+        this.mes = date.getMonthValue();
+        this.anio = date.getYear();
+    }
+
     public Fecha(){
         this.dia = 1;
         this.mes=5;
@@ -93,6 +100,7 @@ public class Fecha {
         Period periodo = Period.between(LocalDate.of(inicio.getYear(),inicio.getMes(), inicio.getDia()),LocalDate.of(this.anio,this.mes,this.dia));
         return new Fecha(periodo.getDays(),periodo.getMonths(),periodo.getYears());
     }
+
     public static void main(String[] args) {
 
     }

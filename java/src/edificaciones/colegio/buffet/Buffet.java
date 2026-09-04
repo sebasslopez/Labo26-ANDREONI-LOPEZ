@@ -1,6 +1,6 @@
 package edificaciones.colegio.buffet;
 
-import personas.Profesor;
+import personas.colegio.Profesor;
 import utils.Fecha;
 
 import java.util.ArrayList;

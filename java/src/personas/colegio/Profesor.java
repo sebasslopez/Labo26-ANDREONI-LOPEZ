@@ -1,6 +1,8 @@
-package personas;
+package personas.colegio;
 
-public class Profesor extends Persona{
+import personas.Persona;
+
+public class Profesor extends Persona {
     private static int porcentajeDescu;
 
     public Profesor(String nombre, String apellido, int p) {

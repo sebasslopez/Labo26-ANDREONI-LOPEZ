@@ -2,9 +2,6 @@ package electro.drones;
 
 import utils.Fecha;
 
-import static electro.drones.Dron.latitudOG;
-import static electro.drones.Dron.longitudOG;
-
 public class Carga extends Dron{
 public int carga;
 

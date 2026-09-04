@@ -5,7 +5,7 @@ import empresas.PoliEmpresa.llamada.FranjaHoraria;
 import empresas.PoliEmpresa.llamada.Llamada;
 import empresas.PoliEmpresa.llamada.LlamadaInternacional;
 import empresas.PoliEmpresa.llamada.LlamadaLocal;
-import personas.Empleado;
+import personas.empleados.EmpleadoSinAsistencia;
 import transporte.Bicicleta;
 import transporte.Camion;
 import transporte.Coche;
@@ -15,10 +15,10 @@ import java.util.ArrayList;
 
 public class PoliEmpresa extends Empresa {
     private ArrayList<Vehiculo> vehiculo;
-    private ArrayList<Empleado> empleados;
+    private ArrayList<EmpleadoSinAsistencia> empleados;
     private ArrayList<Llamada> llamadas;
 
-    public PoliEmpresa(ArrayList<Vehiculo> vehiculo, ArrayList<Empleado> empleados) {
+    public PoliEmpresa(ArrayList<Vehiculo> vehiculo, ArrayList<EmpleadoSinAsistencia> empleados) {
         super("PoliEmpresa");
         this.vehiculo = vehiculo;
         this.empleados = empleados;
@@ -39,11 +39,11 @@ public class PoliEmpresa extends Empresa {
         this.llamadas = new ArrayList<>();
     }
 
-    public ArrayList<Empleado> getEmpleados() {
+    public ArrayList<EmpleadoSinAsistencia> getEmpleados() {
         return empleados;
     }
 
-    public void setEmpleados(ArrayList<Empleado> empleados) {
+    public void setEmpleados(ArrayList<EmpleadoSinAsistencia> empleados) {
         this.empleados = empleados;
     }
 
@@ -74,7 +74,7 @@ public class PoliEmpresa extends Empresa {
         return (desca/coches)*100;
     }
 
-    public boolean agregarEmpleado(Empleado empleado) {
+    public boolean agregarEmpleado(EmpleadoSinAsistencia empleado) {
         if (existeDni(empleado.getDni()) || existeTelefono(empleado.getTelefono())) {
             return false;
         }
@@ -82,7 +82,7 @@ public class PoliEmpresa extends Empresa {
         return true;
     }
 
-    public boolean registrarLlamada(Empleado origen, String telefonoDestino, int duracionMinutos) {
+    public boolean registrarLlamada(EmpleadoSinAsistencia origen, String telefonoDestino, int duracionMinutos) {
         if (origen == null || telefonoDestino == null || duracionMinutos <= 0) {
             return false;
         }
@@ -91,7 +91,7 @@ public class PoliEmpresa extends Empresa {
             return false;
         }
 
-        Empleado destino = buscarEmpleadoPorTelefono(telefonoDestino);
+        EmpleadoSinAsistencia destino = buscarEmpleadoPorTelefono(telefonoDestino);
 
         if (destino == null) {
             return false;
@@ -106,7 +106,7 @@ public class PoliEmpresa extends Empresa {
         return true;
     }
 
-    public Llamada crearLlamada(Empleado origen, Empleado destino, int duracionMinutos) {
+    public Llamada crearLlamada(EmpleadoSinAsistencia origen, EmpleadoSinAsistencia destino, int duracionMinutos) {
         if (origen.viveEnElMismoPaisQue(destino)) {
             return new LlamadaLocal(origen, destino, duracionMinutos);
         }
@@ -114,7 +114,7 @@ public class PoliEmpresa extends Empresa {
         return new LlamadaInternacional(origen, destino, duracionMinutos);
     }
 
-    public ArrayList<Llamada> obtenerLlamadasDe(Empleado empleado) {
+    public ArrayList<Llamada> obtenerLlamadasDe(EmpleadoSinAsistencia empleado) {
         ArrayList<Llamada> llamadasDelEmpleado = new ArrayList<>();
 
         for (Llamada llamada : llamadas) {
@@ -126,7 +126,7 @@ public class PoliEmpresa extends Empresa {
     }
 
     public void mostrarRankingEmpleadosQueMasTiempoLlamaronAlExterior() {
-        ArrayList<Empleado> empleadosRanking = new ArrayList<>();
+        ArrayList<EmpleadoSinAsistencia> empleadosRanking = new ArrayList<>();
         ArrayList<Integer> minutosRanking = new ArrayList<>();
 
         cargarMinutosAlExterior(empleadosRanking, minutosRanking);
@@ -140,10 +140,10 @@ public class PoliEmpresa extends Empresa {
         imprimirRankingExterior(empleadosRanking, minutosRanking);
     }
 
-    public void cargarMinutosAlExterior(ArrayList<Empleado> empleadosRanking,
+    public void cargarMinutosAlExterior(ArrayList<EmpleadoSinAsistencia> empleadosRanking,
                                         ArrayList<Integer> minutosRanking) {
 
-        for (Empleado empleado : empleados) {
+        for (EmpleadoSinAsistencia empleado : empleados) {
             int minutos = calcularMinutosAlExteriorDe(empleado);
 
             if (minutos > 0) {
@@ -152,7 +152,7 @@ public class PoliEmpresa extends Empresa {
             }
         }
     }
-    public int calcularMinutosAlExteriorDe(Empleado empleado) {
+    public int calcularMinutosAlExteriorDe(EmpleadoSinAsistencia empleado) {
         int total = 0;
 
         for (Llamada llamada : llamadas) {
@@ -163,7 +163,7 @@ public class PoliEmpresa extends Empresa {
         return total;
     }
 
-    public void ordenarRankingPorMinutosDescendente(ArrayList<Empleado> empleadosRanking,
+    public void ordenarRankingPorMinutosDescendente(ArrayList<EmpleadoSinAsistencia> empleadosRanking,
                                                     ArrayList<Integer> minutosRanking) {
         //TODO: Teniendo en cuenta los dos arreglos,
         // ordenar desde el empleado que tiene mayor cantidad de minutos
@@ -174,7 +174,7 @@ public class PoliEmpresa extends Empresa {
             ordenado = true;
             for(int i = 1; i < minutosRanking.size(); i++) {
                 if (minutosRanking.get(i-1) < minutosRanking.get(i)) {
-                    Empleado aux = empleadosRanking.get(i-1);
+                    EmpleadoSinAsistencia aux = empleadosRanking.get(i-1);
                     int minAux = minutosRanking.get(i-1);
                     minutosRanking.set(i-1, minutosRanking.get(i));
                     empleadosRanking.set(i-1, empleadosRanking.get(i));
@@ -186,17 +186,17 @@ public class PoliEmpresa extends Empresa {
         }
     }
 
-    private void imprimirRankingExterior(ArrayList<Empleado> empleadosRanking,
+    private void imprimirRankingExterior(ArrayList<EmpleadoSinAsistencia> empleadosRanking,
                                          ArrayList<Integer> minutosRanking) {
 
         System.out.println("Ranking de empleados que mas tiempo llamaron al exterior:");
         //TODO: Mostrar el ranking ordenado concatenando el empleado con los minutos
-        for (Empleado empleado : empleadosRanking) {
+        for (EmpleadoSinAsistencia empleado : empleadosRanking) {
             System.out.println("Empleado: " + empleado.getNombreCompleto() + ", Minutos: " + minutosRanking.get(empleadosRanking.indexOf(empleado)));
         }
     }
 
-    public void mostrarLlamadasDe(Empleado empleado) {
+    public void mostrarLlamadasDe(EmpleadoSinAsistencia empleado) {
         //TODO: Implementar un método que reciba un empleado y muestre
         // todas las llamadas que haya hecho ese empleado. Luego, mostrar el costo total
         double total = 0;
@@ -212,13 +212,13 @@ public class PoliEmpresa extends Empresa {
 
     public void mostrarTodasLasLlamadas() {
         //TODO: Ver el detalle de todas las llamadas de la empresa por empleado
-        for(Empleado empleado : empleados){
+        for(EmpleadoSinAsistencia empleado : empleados){
             mostrarLlamadasDe(empleado);
         }
     }
 
-    public boolean existeEmpleado(Empleado empleado) {
-        for (Empleado empleadoActual : empleados) {
+    public boolean existeEmpleado(EmpleadoSinAsistencia empleado) {
+        for (EmpleadoSinAsistencia empleadoActual : empleados) {
             if (empleadoActual.tieneMismoDniQue(empleado.getDni())) {
                 return true;
             }
@@ -228,7 +228,7 @@ public class PoliEmpresa extends Empresa {
     }
 
     public boolean existeDni(int dni) {
-        for (Empleado empleado : empleados) {
+        for (EmpleadoSinAsistencia empleado : empleados) {
             if (empleado.tieneMismoDniQue(dni)) {
                 return true;
             }
@@ -241,8 +241,8 @@ public class PoliEmpresa extends Empresa {
         return buscarEmpleadoPorTelefono(telefono) != null;
     }
 
-    public Empleado buscarEmpleadoPorTelefono(String telefono) {
-        for (Empleado empleado : empleados) {
+    public EmpleadoSinAsistencia buscarEmpleadoPorTelefono(String telefono) {
+        for (EmpleadoSinAsistencia empleado : empleados) {
             if (empleado.tieneTelefono(telefono)) {
                 return empleado;
             }
@@ -282,12 +282,12 @@ public class PoliEmpresa extends Empresa {
     public static void main(String[] args) {
         PoliEmpresa poliEmpresa = new PoliEmpresa("IPM Sistemas");
 
-        Empleado ana = new Empleado("Ana", "Lopez", 111, "Argentina", "1111", "Buenos Aires", "+54", FranjaHoraria.GMT_MENOS3);
-        Empleado juan = new Empleado("Juan", "Perez", 222, "Argentina", "2222", "Cordoba", "+54", FranjaHoraria.GMT_MENOS3);
-        Empleado maria = new Empleado("Maria", "Silva", 333, "Uruguay", "3333", "Montevideo", "+598", FranjaHoraria.GMT_MENOS3);
-        Empleado lucas = new Empleado("Lucas", "Gomez", 444, "Argentina", "4444", "Rosario", "+54", FranjaHoraria.GMT_MENOS3);
-        Empleado sofia = new Empleado("Sofia", "Martinez", 555, "Chile", "5555", "Santiago", "+56", FranjaHoraria.GMT_MENOS4);
-        Empleado carlos = new Empleado("Carlos", "Fernandez", 666, "Brasil", "6666", "Rio de Janeiro", "+55", FranjaHoraria.GMT_MENOS3);
+        EmpleadoSinAsistencia ana = new EmpleadoSinAsistencia("Ana", "Lopez", 111, "Argentina", "1111", "Buenos Aires", "+54", FranjaHoraria.GMT_MENOS3);
+        EmpleadoSinAsistencia juan = new EmpleadoSinAsistencia("Juan", "Perez", 222, "Argentina", "2222", "Cordoba", "+54", FranjaHoraria.GMT_MENOS3);
+        EmpleadoSinAsistencia maria = new EmpleadoSinAsistencia("Maria", "Silva", 333, "Uruguay", "3333", "Montevideo", "+598", FranjaHoraria.GMT_MENOS3);
+        EmpleadoSinAsistencia lucas = new EmpleadoSinAsistencia("Lucas", "Gomez", 444, "Argentina", "4444", "Rosario", "+54", FranjaHoraria.GMT_MENOS3);
+        EmpleadoSinAsistencia sofia = new EmpleadoSinAsistencia("Sofia", "Martinez", 555, "Chile", "5555", "Santiago", "+56", FranjaHoraria.GMT_MENOS4);
+        EmpleadoSinAsistencia carlos = new EmpleadoSinAsistencia("Carlos", "Fernandez", 666, "Brasil", "6666", "Rio de Janeiro", "+55", FranjaHoraria.GMT_MENOS3);
 
         poliEmpresa.agregarEmpleado(ana);
         poliEmpresa.agregarEmpleado(juan);

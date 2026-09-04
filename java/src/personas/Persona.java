@@ -2,6 +2,8 @@ package personas;
 
 import utils.Fecha;
 
+import java.time.LocalDate;
+
 public abstract class Persona {
     private String nombre;
     private String apellido;
@@ -10,13 +12,17 @@ public abstract class Persona {
     private int dni;
     private String pais;
 
-
-
     public Persona(String nombre, String apellido, int dni, Fecha fechan) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
         this.fechan = fechan;
+    }
+
+    public Persona(String nombre, String apellido, LocalDate date) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.fechan = new Fecha(date);
     }
 
     public Persona(String nombre, String apellido, int dni, String pais) {

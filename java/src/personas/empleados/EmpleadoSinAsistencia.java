@@ -1,17 +1,14 @@
-package personas;
+package personas.empleados;
 
 import empresas.PoliEmpresa.llamada.FranjaHoraria;
 
-public class Empleado extends Persona{
+public class EmpleadoSinAsistencia extends Empleado{
     private String provincia;
-    private String telefono;
     private String codigoPais;
     private FranjaHoraria franjaHoraria;
 
-    public Empleado(String nombre, String apellido, int dni, String pais,
-                    String telefono, String provincia, String codigoPais, FranjaHoraria franjaHoraria) {
-        super(nombre, apellido, dni, pais);
-        this.telefono = telefono;
+    public EmpleadoSinAsistencia(String nombre, String apellido, int dni, String pais, String telefono, String provincia, String codigoPais, FranjaHoraria franjaHoraria) {
+        super(nombre, apellido, dni, pais,telefono);
         this.provincia = provincia;
         this.codigoPais = codigoPais;
         this.franjaHoraria = franjaHoraria;
@@ -25,14 +22,6 @@ public class Empleado extends Persona{
         this.provincia = provincia;
     }
 
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-
     public String getCodigoPais() {
         return codigoPais;
     }
@@ -41,9 +30,7 @@ public class Empleado extends Persona{
         return franjaHoraria;
     }
 
-    public boolean tieneTelefono(String telefono) {
-        return this.telefono.equals(telefono);
-    }
+
 
     @Override
     public String datos() {

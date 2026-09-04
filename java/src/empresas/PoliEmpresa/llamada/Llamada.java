@@ -1,27 +1,27 @@
 package empresas.PoliEmpresa.llamada;
 
-import personas.Empleado;
+import personas.empleados.EmpleadoSinAsistencia;
 
 import java.time.LocalDateTime;
 
 public abstract class Llamada {
-    private Empleado origen;
-    private Empleado destino;
+    private EmpleadoSinAsistencia origen;
+    private EmpleadoSinAsistencia destino;
     private LocalDateTime fecha;
     private int duracionMinutos;
 
-    public Llamada(Empleado origen, Empleado destino, int duracionMinutos) {
+    public Llamada(EmpleadoSinAsistencia origen, EmpleadoSinAsistencia destino, int duracionMinutos) {
         this.origen = origen;
         this.destino = destino;
         this.duracionMinutos = duracionMinutos;
         this.fecha = LocalDateTime.now();
     }
 
-    public Empleado getOrigen() {
+    public EmpleadoSinAsistencia getOrigen() {
         return origen;
     }
 
-    public Empleado getDestino() {
+    public EmpleadoSinAsistencia getDestino() {
         return destino;
     }
 
@@ -41,7 +41,7 @@ public abstract class Llamada {
         return false;
     }
 
-    public boolean fueRealizadaPor(Empleado empleado) {
+    public boolean fueRealizadaPor(EmpleadoSinAsistencia empleado) {
         return origen.tieneMismoDniQue(empleado.getDni());
     }
 
@@ -54,7 +54,7 @@ public abstract class Llamada {
                 + " | Costo: $" + calcularCosto();
     }
 
-    public int obtenerMinutosAlExteriorDe(Empleado empleado) {
+    public int obtenerMinutosAlExteriorDe(EmpleadoSinAsistencia empleado) {
         return 0;
     }
 }

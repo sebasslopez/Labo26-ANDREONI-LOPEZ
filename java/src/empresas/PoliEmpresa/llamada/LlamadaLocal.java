@@ -1,13 +1,13 @@
 package empresas.PoliEmpresa.llamada;
 
-import personas.Empleado;
+import personas.empleados.EmpleadoSinAsistencia;
 
 public class LlamadaLocal extends Llamada {
     private String provinciaOrigen;
     private String provinciaDestino;
     private double costoPorMinuto;
 
-    public LlamadaLocal(Empleado origen, Empleado destino, int duracionMinutos) {
+    public LlamadaLocal(EmpleadoSinAsistencia origen, EmpleadoSinAsistencia destino, int duracionMinutos) {
         super(origen, destino, duracionMinutos);
         this.provinciaOrigen = origen.getProvincia();
         this.provinciaDestino = destino.getProvincia();
