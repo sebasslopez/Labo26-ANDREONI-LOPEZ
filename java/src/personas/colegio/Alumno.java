@@ -59,8 +59,4 @@ public class Alumno extends Persona {
         if(!materias.contains(m)) this.materias.add(m);
     }
 
-    @Override
-    public String datos() {
-        return "";
-    }
 }

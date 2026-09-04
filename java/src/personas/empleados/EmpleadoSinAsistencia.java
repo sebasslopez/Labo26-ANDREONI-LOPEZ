@@ -30,10 +30,4 @@ public class EmpleadoSinAsistencia extends Empleado{
         return franjaHoraria;
     }
 
-
-
-    @Override
-    public String datos() {
-        return "";
-    }
 }

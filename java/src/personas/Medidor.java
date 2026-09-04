@@ -92,8 +92,4 @@ public class Medidor extends Persona {
         return mediciones.containsKey(fecha);
     }
 
-    @Override
-    public String datos() {
-        return "";
-    }
 }

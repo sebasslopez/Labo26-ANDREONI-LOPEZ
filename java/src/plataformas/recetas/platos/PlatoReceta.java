@@ -73,5 +73,6 @@ public boolean esPostre(){
     }
 
     public boolean masPasosQue (PlatoReceta p){
+    return true;
     }
 }

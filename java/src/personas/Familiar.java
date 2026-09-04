@@ -14,9 +14,4 @@ public class Familiar extends Persona{
         this.comidas= new HashMap<>();
     }
 
-
-    @Override
-    public String datos() {
-        return "";
-    }
 }

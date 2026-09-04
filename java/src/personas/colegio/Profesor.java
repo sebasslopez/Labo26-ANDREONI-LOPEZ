@@ -10,11 +10,6 @@ public class Profesor extends Persona {
         porcentajeDescu = p;
     }
 
-    @Override
-    public String datos() {
-        return "";
-    }
-
     public int getPorcentajeDescu() {
         return porcentajeDescu;
     }

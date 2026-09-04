@@ -43,7 +43,7 @@ public class plataformaDeRecetas {
     public PlatoReceta recetaConMasPasos (){
         PlatoReceta recetamaspasos = recetas.get(0);
         for(PlatoReceta p : recetas){
-            if()
         }
+        return null;
     }
 }

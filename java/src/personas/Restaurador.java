@@ -21,12 +21,7 @@ public class Restaurador extends Persona{
             if(c.getEstadodeconservacion().ordinal() + 3 > 10) c.setEstadodeconservacion(EstadoDeConservacion.DIEZ);
             else c.setEstadodeconservacion(EstadoDeConservacion.values()[c.getEstadodeconservacion().ordinal() + 3]);
         }
-        System.out.println("Antes: Titulo: "+antes.getTitulo()+" Pintor: "+antes.getPintor().datos()+" Año de creación: "+antes.getAniodecreacion()+" Estado de conservación: "+antes.getEstadodeconservacion());
-        System.out.println("Ahora: Titulo: "+c.getTitulo()+" Pintor: "+c.getPintor().datos()+" Año de creación: "+c.getAniodecreacion()+" Estado de conservación: "+c.getEstadodeconservacion());
-    }
-
-    @Override
-    public String datos() {
-        return "";
+        System.out.println("Antes: Titulo: "+antes.getTitulo()+" Pintor: "+antes.getPintor()+" Año de creación: "+antes.getAniodecreacion()+" Estado de conservación: "+antes.getEstadodeconservacion());
+        System.out.println("Ahora: Titulo: "+c.getTitulo()+" Pintor: "+c.getPintor()+" Año de creación: "+c.getAniodecreacion()+" Estado de conservación: "+c.getEstadodeconservacion());
     }
 }

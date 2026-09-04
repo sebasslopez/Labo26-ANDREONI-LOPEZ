@@ -48,9 +48,4 @@ public class Bebedor extends Persona{
         bebidas.remove(idx);
         cantidad.remove(idx);
     }
-
-    @Override
-    public String datos() {
-        return "";
-    }
 }

@@ -50,28 +50,31 @@ public abstract class Persona {
         this.nombre = nombre;
         this.fechan = f;
         this.apellido = apellido;
-        this.direccion="Leandro N Alem 7866";
+        this.direccion = "Leandro N Alem 7866";
         this.dni = 49439226;
     }
-    public Persona(String nombre, String apellido,Fecha f,String direccion) {
+
+    public Persona(String nombre, String apellido, Fecha f, String direccion) {
         this.nombre = nombre;
         this.fechan = f;
         this.apellido = apellido;
         this.direccion = direccion;
         this.dni = 49439226;
     }
-    public Persona(String nombre,String apellido){
-        this.apellido=apellido;
-        this.nombre=nombre;
-        this.fechan= new Fecha();
-        this.direccion="Leandro N Alem 7866";
+
+    public Persona(String nombre, String apellido) {
+        this.apellido = apellido;
+        this.nombre = nombre;
+        this.fechan = new Fecha();
+        this.direccion = "Leandro N Alem 7866";
         this.dni = 49439226;
     }
-    public Persona(){
-        this.apellido="Barbieri";
-        this.nombre="Martín";
-        this.fechan= new Fecha();
-        this.direccion="Leandro N Alem 7866";
+
+    public Persona() {
+        this.apellido = "Barbieri";
+        this.nombre = "Martín";
+        this.fechan = new Fecha();
+        this.direccion = "Leandro N Alem 7866";
         this.dni = 49439226;
     }
 
@@ -127,7 +130,10 @@ public abstract class Persona {
         this.pais = pais;
     }
 
-    public abstract String datos();
+    @Override
+    public String toString() {
+        return getNombreCompleto() +" "+ dni +" "+ fechan.corta();
+    }
 
     public String getNombreCompleto(){
         return nombre + " " + apellido;

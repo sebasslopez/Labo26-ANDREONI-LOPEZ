@@ -43,7 +43,7 @@ public class EmpleadoConAsistencia extends Empleado{
     }
 
     @Override
-    public String datos() {
-        return "";
+    public String toString() {
+        return this.getNombreCompleto();
     }
 }
