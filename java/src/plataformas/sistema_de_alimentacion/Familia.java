@@ -1,6 +1,8 @@
 package plataformas.sistema_de_alimentacion;
 
 import personas.Familiar;
+import personas.Medidor;
+import utils.Fecha;
 
 import java.util.HashSet;
 
@@ -8,8 +10,8 @@ public class Familia {
 
     private HashSet<Familiar> familiares;
 
-    public Familia(HashSet<Familiar> familiares) {
-        this.familiares = familiares;
+    public Familia() {
+        this.familiares = new HashSet<>();
     }
 
     public HashSet<Familiar> getFamiliares() {
@@ -18,6 +20,10 @@ public class Familia {
 
     public void setFamiliares(HashSet<Familiar> familiares) {
         this.familiares = familiares;
+    }
+
+    public void agregarFamiliar(Familiar f){
+        familiares.add(f);
     }
 
     public void eliminarFamiliar( Familiar f){
@@ -31,7 +37,7 @@ public class Familia {
     public Familiar familiarMasCal(){
         Familiar masCalConsumidas =null;
         for(Familiar fa: familiares){
-            if(masCalConsumidas==null || masCalConsumidas.calcularCal()<fa.calcularCal()){
+            if(masCalConsumidas==null || masCalConsumidas.calcularCalorias()<fa.calcularCalorias()){
                 masCalConsumidas=fa;
             }
         }
@@ -41,7 +47,7 @@ public class Familia {
     public Familiar familiarMenosCal(){
         Familiar menosCalConsumidas =null;
         for(Familiar fa: familiares){
-            if(menosCalConsumidas==null || menosCalConsumidas.calcularCal()>fa.calcularCal()){
+            if(menosCalConsumidas==null || menosCalConsumidas.calcularCalorias()>fa.calcularCalorias()){
                 menosCalConsumidas=fa;
             }
         }
@@ -49,11 +55,46 @@ public class Familia {
     }
 
     public int promCal(Familiar f){
-        int cont=0;
-        for(Familiar fa: familiares){
-            cont++;
+        return f.promedioCalorias();
+    }
+    
+    public int promCal(){
+        int total = 0;
+        for(Familiar f : familiares){
+            total += f.promedioCalorias();
         }
-        return f.calcularCal()/cont;
+        return total/familiares.size();
     }
 
+    public HashSet<Familiar> familiarComeEstePlato(PlatoComida p){
+        HashSet<Familiar> fs = new HashSet<>();
+        for (Familiar f : familiares){
+            if(f.comioEstePlato(p)) fs.add(f);
+        }
+        return fs;
+    }
+    
+    public HashSet<PlatoComida> queComen(){
+        HashSet<PlatoComida> platos = new HashSet<>();
+        for(Familiar f : familiares){
+            platos.addAll(f.getComidas().keySet());
+        }
+        return platos;
+    }
+
+
+    static void main(String[] args){
+        Familiar f1 = new Familiar("castelli","luca",new Fecha(31,5,2009));
+        Familiar f2=  new Familiar("sbas","tian",new Fecha(11,11,1111));
+        Familiar  f3= new Familiar("martina","andreoni",new Fecha(27,5,2009));
+        PlatoComida p1= new PlatoComida()
+
+        Familia familia = new Familia();
+        familia.agregarFamiliar(f1);
+        familia.agregarFamiliar(f2);
+        familia.agregarFamiliar(f3);
+        familia.eliminarFamiliar(f3);
+
+
+    }
 }
