@@ -1,5 +1,7 @@
 package transporte;
 
+import java.time.LocalDate;
+
 public class Camion extends Vehiculo {
     private int capkg;
 
@@ -7,6 +9,11 @@ public class Camion extends Vehiculo {
         super(marca, modelo, color, patente, anio, cantruedas);
         this.capkg = capkg;
 
+    }
+
+    public Camion(String marca, String modelo, int patente,int capkg) {
+        super(marca, modelo,Color.NEGRO, patente, LocalDate.now().getYear(),4);
+        this.capkg = capkg;
     }
 
     public int getCapkg() {
