@@ -84,10 +84,13 @@ public class Familia {
 
 
     static void main(String[] args){
+        HashSet<String> i= new HashSet<>();
+        i.add("arroz");
+        i.add("salmon");
         Familiar f1 = new Familiar("castelli","luca",new Fecha(31,5,2009));
         Familiar f2=  new Familiar("sbas","tian",new Fecha(11,11,1111));
         Familiar  f3= new Familiar("martina","andreoni",new Fecha(27,5,2009));
-        PlatoComida p1= new PlatoComida()
+        PlatoComida p1= new PlatoComida("sushi",i,51);
 
         Familia familia = new Familia();
         familia.agregarFamiliar(f1);
