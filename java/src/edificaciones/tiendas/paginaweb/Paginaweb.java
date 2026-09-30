@@ -11,6 +11,8 @@ import electro.componentes.dispositivo.salida.Pantalla;
 import edificaciones.tiendas.paginaweb.compras.Compra;
 import edificaciones.tiendas.paginaweb.compras.metodoDePago.Efectivo;
 import edificaciones.tiendas.paginaweb.compras.metodoDePago.Tarjeta;
+import exceptions.SinComponenteException;
+import exceptions.SinStockException;
 import personas.Cliente;
 
 import java.util.ArrayList;
@@ -58,8 +60,11 @@ public class Paginaweb {
     }
 
     public void realizarCompra(Compra c){
-        if(c.sePuedeComprar() && c.getMdp().pagar(c.getCliente(), c.getCompu().calcularTotal())){
-            compusvendidas.add(c.getCompu());
+        try{
+            if(c.realizarCompra()) compusvendidas.add(c.getCompu());
+        }
+        catch (SinComponenteException | SinStockException e){
+            System.out.println("La compra no se pudo concretar por: "+e.getMessage());
         }
     }
 
