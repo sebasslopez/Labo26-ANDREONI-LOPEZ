@@ -1,4 +1,4 @@
-import exeptions.NullNameExeption;
+import exceptions.NullNameExeption;
 
 public class Main {
     static void main() {
