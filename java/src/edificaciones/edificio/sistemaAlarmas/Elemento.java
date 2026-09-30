@@ -46,4 +46,13 @@ public abstract class Elemento {
     }
 
     public abstract void dispararAlarma();
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() +
+                " | conectado: " + conectado +
+                " | medida: " + medida +
+                " | umbral: " + umbral +
+                " | anio: " + anio;
+    }
 }
