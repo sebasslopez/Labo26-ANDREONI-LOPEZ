@@ -1,38 +1,37 @@
-package bibliotecaVirtual;
+package plataformas.bibliotecaVirtual;
 
-public class LibroElectronico {
+import edificaciones.biblioteca.Editorial;
+import edificaciones.biblioteca.Libro;
+import personas.Persona;
+import utils.Fecha;
+
+public class LibroElectronico extends Libro {
     public static final int DESCARGAS_INICIALES = 145;
 
-    private String titulo;
-    private Autor autor;
     private Genero genero;
     private String nombreArchivoPdf;
     private int descargasDisponibles;
 
-    public LibroElectronico(String titulo, Autor autor, Genero genero, String nombreArchivoPdf){
-        this.titulo = titulo;
-        this.autor = autor;
+    public LibroElectronico(String titulo, Autor autor, int isbn, int paginas, Editorial editorial, Fecha fecha, Genero genero, String nombreArchivoPdf){
+        super(titulo, autor, isbn, paginas, editorial, fecha);
         this.genero = genero;
         this.nombreArchivoPdf = nombreArchivoPdf;
         this.descargasDisponibles = DESCARGAS_INICIALES;
         autor.agregarLibroALaBibliografia(this);
     }
 
-    public String getTitulo() {
-        return titulo;
+    public LibroElectronico(String titulo, Autor autor, Editorial editorial, Fecha fecha, Genero genero, String nombreArchivoPdf){
+        this(titulo, autor, -1, -1, editorial, fecha, genero, nombreArchivoPdf);
     }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
+    @Override
+    public Autor getAutor(){
+        return (Autor) super.getAutor();
     }
 
-    public Autor getAutor() {
-        return autor;
-    }
-
-    public void setAutor(Autor autor) {
-        this.autor.quitarLibroDeLaBibliografia(this);
-        this.autor = autor;
+    public void setAutor(Autor autor){
+        getAutor().quitarLibroDeLaBibliografia(this);
+        setAutor((Persona) autor);
         autor.agregarLibroALaBibliografia(this);
     }
 
@@ -71,15 +70,16 @@ public class LibroElectronico {
     }
 
     public void mostrarInfo(){
-        System.out.println("Titulo: " + titulo);
-        System.out.println("   Autor: " + autor);
+        System.out.println("Titulo: " + getTitulo());
+        System.out.println("   Autor: " + getAutor());
         System.out.println("   Genero: " + genero);
+        System.out.println("   Editorial: " + getEditorial());
         System.out.println("   Archivo pdf: " + nombreArchivoPdf);
         System.out.println("   Descargas disponibles: " + descargasDisponibles);
     }
 
     @Override
     public String toString() {
-        return titulo + " de " + autor.getNombre() + " | " + genero + " | descargas disponibles: " + descargasDisponibles;
+        return getTitulo() + " de " + getAutor().getNombre() + " | " + genero + " | descargas disponibles: " + descargasDisponibles;
     }
 }

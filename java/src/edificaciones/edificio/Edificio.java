@@ -4,6 +4,8 @@ import edificaciones.edificio.sistemaAlarmas.Elemento;
 import edificaciones.edificio.sistemaAlarmas.GrupoDeElementos;
 import electro.sensores.SensorDePresion;
 import electro.sensores.SensorDeTemperatura;
+import exceptions.AlarmaNoEncontradaException;
+import exceptions.SinAlarmasException;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -52,7 +54,14 @@ public class Edificio {
         return cantidad;
     }
 
-    public Elemento obtenerAlarma(int numero){
+    public Elemento obtenerAlarma(int numero) throws SinAlarmasException, AlarmaNoEncontradaException {
+        int cantidad = cantidadDeAlarmas();
+        if (cantidad == 0){
+            throw new SinAlarmasException();
+        }
+        if (numero < 0 || numero >= cantidad){
+            throw new AlarmaNoEncontradaException(numero, cantidad);
+        }
         int contador = 0;
         for (GrupoDeElementos g : detesensor){
             for (Elemento e : g.getElementos()){
@@ -62,10 +71,10 @@ public class Edificio {
                 contador++;
             }
         }
-        return null;
+        throw new AlarmaNoEncontradaException(numero, cantidad);
     }
 
-    public void mostrarInfoDeAlarma(int numero){
+    public void mostrarInfoDeAlarma(int numero) throws SinAlarmasException, AlarmaNoEncontradaException {
         System.out.println(obtenerAlarma(numero));
     }
 
@@ -80,19 +89,25 @@ public class Edificio {
 
         Scanner scanner = new Scanner(System.in);
         int ultima = edificio.cantidadDeAlarmas() - 1;
-        int numero = -1;
-        while (numero < 0 || numero > ultima){
+        boolean consultada = false;
+        while (!consultada){
             System.out.print("Ingrese el numero de alarma que desea consultar (entre 0 y " + ultima + "): ");
+            String dato = scanner.nextLine().trim();
+            int numero;
             try {
-                numero = scanner.nextInt();
+                numero = Integer.parseInt(dato);
             } catch (NumberFormatException e) {
-                numero = -1;
-            }
-            if (numero < 0 || numero > ultima){
                 System.out.println("Dato invalido, debe ser un numero entero entre 0 y " + ultima + ".");
+                continue;
+            }
+            try {
+                edificio.mostrarInfoDeAlarma(numero);
+                consultada = true;
+            } catch (SinAlarmasException e) {
+                System.out.println(e.getMessage());
+            } catch (AlarmaNoEncontradaException e) {
+                System.out.println(e.getMessage());
             }
         }
-
-        edificio.mostrarInfoDeAlarma(numero);
     }
 }

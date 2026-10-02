@@ -4,7 +4,11 @@ public class Bebida_alcoholica extends Bebida {
      private int cantalcohol;
 
      public Bebida_alcoholica(int cantalcohol, String nombre){
-         super(0,nombre,cantalcohol*20 );
+         this(cantalcohol, nombre, 0);
+     }
+
+     public Bebida_alcoholica(int cantalcohol, String nombre, int cantidadDisponible){
+         super(0, nombre, cantalcohol*20, cantidadDisponible);
          this.cantalcohol=cantalcohol;
      }
 

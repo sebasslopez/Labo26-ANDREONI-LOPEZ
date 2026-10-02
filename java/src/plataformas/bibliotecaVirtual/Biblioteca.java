@@ -1,4 +1,4 @@
-package bibliotecaVirtual;
+package plataformas.bibliotecaVirtual;
 
 import java.util.ArrayList;
 

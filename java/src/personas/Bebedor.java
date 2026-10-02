@@ -25,10 +25,17 @@ public class Bebedor extends Persona{
 
     public int calcularCoefHidratacion(){
         int coef = 0;
-        for(Bebida b : bebidas){
-            coef += cantidad.get(bebidas.indexOf(b)) * (b.getCoeficienteP() - b.getCoeficienteN());
+        for(int i = 0; i < bebidas.size(); i++){
+            Bebida b = bebidas.get(i);
+            coef += cantidad.get(i) * (b.getCoeficienteP() - b.getCoeficienteN());
         }
         return coef;
+    }
+
+    public int getCantidadConsumida(Bebida b){
+        int idx = bebidas.indexOf(b);
+        if(idx == -1) return 0;
+        return cantidad.get(idx);
     }
 
     public void anadirBebida(Bebida b, int cant){

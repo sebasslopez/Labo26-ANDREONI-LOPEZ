@@ -5,7 +5,11 @@ public class Bebida_Azucarada extends Bebida {
     private int cantazucar;
 
     public Bebida_Azucarada(String nombre, int cantazucar) {
-        super(1, nombre, cantazucar*10);
+        this(nombre, cantazucar, 0);
+    }
+
+    public Bebida_Azucarada(String nombre, int cantazucar, int cantidadDisponible) {
+        super(1, nombre, cantazucar*10, cantidadDisponible);
         this.cantazucar = cantazucar;
     }
 

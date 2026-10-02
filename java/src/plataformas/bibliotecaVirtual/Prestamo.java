@@ -1,4 +1,4 @@
-package bibliotecaVirtual;
+package plataformas.bibliotecaVirtual;
 
 import utils.Fecha;
 
