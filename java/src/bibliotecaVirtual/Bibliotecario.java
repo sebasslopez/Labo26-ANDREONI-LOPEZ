@@ -1,7 +1,7 @@
 package bibliotecaVirtual;
 
-import exeptions.LimiteDePrestamosAlcanzadoException;
-import exeptions.MembresiaException;
+import exceptions.LimiteDePrestamosAlcanzadoException;
+import exceptions.MembresiaException;
 import personas.Persona;
 import utils.Fecha;
 

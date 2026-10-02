@@ -1,7 +1,7 @@
 package bibliotecaVirtual;
 
-import exeptions.LimiteDePrestamosAlcanzadoException;
-import exeptions.MembresiaException;
+import exceptions.LimiteDePrestamosAlcanzadoException;
+import exceptions.MembresiaException;
 import utils.Fecha;
 
 public class Main {
@@ -40,20 +40,26 @@ public class Main {
         System.out.println("--- Prestamos ---");
         try {
             bibliotecario.prestarLibro(bruno, hardToBeARobot);
-        } catch (MembresiaException | LimiteDePrestamosAlcanzadoException e) {
-            System.out.println("Prestamo rechazado: " + e.getMessage());
+        } catch (MembresiaException e) {
+            System.out.println("Prestamo rechazado por membresia: " + e.getMessage());
+        } catch (LimiteDePrestamosAlcanzadoException e) {
+            System.out.println("Prestamo rechazado por descargas: " + e.getMessage());
         }
 
         try {
             bibliotecario.prestarLibro(bruno, elPlanetario);
-        } catch (MembresiaException | LimiteDePrestamosAlcanzadoException e) {
-            System.out.println("Prestamo rechazado: " + e.getMessage());
+        } catch (MembresiaException e) {
+            System.out.println("Prestamo rechazado por membresia: " + e.getMessage());
+        } catch (LimiteDePrestamosAlcanzadoException e) {
+            System.out.println("Prestamo rechazado por descargas: " + e.getMessage());
         }
 
         try {
             bibliotecario.prestarLibro(ana, taleOfTwoCities);
-        } catch (MembresiaException | LimiteDePrestamosAlcanzadoException e) {
-            System.out.println("Prestamo rechazado: " + e.getMessage());
+        } catch (MembresiaException e) {
+            System.out.println("Prestamo rechazado por membresia: " + e.getMessage());
+        } catch (LimiteDePrestamosAlcanzadoException e) {
+            System.out.println("Prestamo rechazado por descargas: " + e.getMessage());
         }
 
         System.out.println();
@@ -63,25 +69,31 @@ public class Main {
 
         try {
             bibliotecario.prestarLibro(bruno, hardToBeARobot);
-        } catch (MembresiaException | LimiteDePrestamosAlcanzadoException e) {
-            System.out.println("Prestamo rechazado: " + e.getMessage());
+        } catch (MembresiaException e) {
+            System.out.println("Prestamo rechazado por membresia: " + e.getMessage());
+        } catch (LimiteDePrestamosAlcanzadoException e) {
+            System.out.println("Prestamo rechazado por descargas: " + e.getMessage());
         }
 
         System.out.println();
         System.out.println("--- Usuario bronce que supera su cupo de 5 prestamos ---");
         LibroElectronico[] paraAna = {elPlanetario, fourthMan, elAmanteDeLadyChesney, gracias};
-        try {
-            for (LibroElectronico libro : paraAna){
+        for (LibroElectronico libro : paraAna){
+            try {
                 bibliotecario.prestarLibro(ana, libro);
+            } catch (MembresiaException e) {
+                System.out.println("Prestamo rechazado por membresia: " + e.getMessage());
+            } catch (LimiteDePrestamosAlcanzadoException e) {
+                System.out.println("Prestamo rechazado por descargas: " + e.getMessage());
             }
-        } catch (MembresiaException | LimiteDePrestamosAlcanzadoException e) {
-            System.out.println("Prestamo rechazado: " + e.getMessage());
         }
 
         try {
             bibliotecario.prestarLibro(ana, hardToBeARobot);
-        } catch (MembresiaException | LimiteDePrestamosAlcanzadoException e) {
-            System.out.println("Prestamo rechazado: " + e.getMessage());
+        } catch (MembresiaException e) {
+            System.out.println("Prestamo rechazado por membresia: " + e.getMessage());
+        } catch (LimiteDePrestamosAlcanzadoException e) {
+            System.out.println("Prestamo rechazado por descargas: " + e.getMessage());
         }
 
         System.out.println();
@@ -89,8 +101,10 @@ public class Main {
         gracias.setDescargasDisponibles(0);
         try {
             bibliotecario.prestarLibro(carla, gracias);
-        } catch (MembresiaException | LimiteDePrestamosAlcanzadoException e) {
-            System.out.println("Prestamo rechazado: " + e.getMessage());
+        } catch (MembresiaException e) {
+            System.out.println("Prestamo rechazado por membresia: " + e.getMessage());
+        } catch (LimiteDePrestamosAlcanzadoException e) {
+            System.out.println("Prestamo rechazado por descargas: " + e.getMessage());
         }
 
         System.out.println();
