@@ -102,12 +102,10 @@ public class SistemaDeResiduos {
         if(camiones.contains(c) && !yaViajo(f,c)) recolecciones.add(new Recoleccion(f,c,c.viajar(camino)));
     }
 
-    public boolean yaViajo(LocalDate f,CamionDeBasura c){
-        for(Recoleccion r : recolecciones){
-            if(r.esElMismoCamion(c) && r.esElMismoDia(f)) return true;
+    public boolean yaViajo(LocalDate f,CamionDeBasura c) {
+        for (Recoleccion r : recolecciones) {
+            if (r.esElMismoCamion(c) && r.esElMismoDia(f)) return true;
         }
         return false;
     }
-
-
 }

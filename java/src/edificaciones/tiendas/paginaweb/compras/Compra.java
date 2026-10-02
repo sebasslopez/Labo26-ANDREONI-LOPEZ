@@ -6,6 +6,10 @@ import electro.componentes.Componente;
 import electro.componentes.dispositivo.entrada.DispositivosEntrada;
 import electro.componentes.dispositivo.salida.DispositivosSalida;
 import edificaciones.tiendas.paginaweb.compras.metodoDePago.MetodoDePago;
+import exceptions.SinCPUException;
+import exceptions.SinComponenteException;
+import exceptions.SinDispositivoIOException;
+import exceptions.SinStockException;
 import personas.Cliente;
 
 public class Compra {
@@ -43,8 +47,23 @@ public class Compra {
         this.mdp = mdp;
     }
 
-    public boolean sePuedeComprar(){
-        return hayCPU() && hayDispDeEntrada() && hayDispDeSalida() && hayStock();
+    public boolean hayDispositivoIO(){
+        return hayDispDeEntrada() && hayDispDeSalida();
+    }
+
+    public boolean sePuedeComprar() throws SinComponenteException, SinStockException {
+        if(!hayCPU()) throw new SinCPUException();
+        if(!hayDispositivoIO()) throw new SinDispositivoIOException();
+        if(!hayStock()) throw new SinStockException();
+        return true;
+    }
+
+    public boolean realizarPago(){
+        return mdp.pagar(cliente,compu.calcularTotal());
+    }
+
+    public boolean realizarCompra() throws SinComponenteException,SinStockException {
+        return sePuedeComprar() && realizarPago();
     }
 
     private boolean hayStock(){
