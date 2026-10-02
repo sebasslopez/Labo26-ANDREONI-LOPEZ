@@ -66,7 +66,6 @@ public class Main {
         System.out.println("--- Devoluciones ---");
         bibliotecario.devolverLibro(bruno, hardToBeARobot);
         bibliotecario.devolverLibro(bruno, hardToBeARobot);
-
         try {
             bibliotecario.prestarLibro(bruno, hardToBeARobot);
         } catch (MembresiaException e) {
