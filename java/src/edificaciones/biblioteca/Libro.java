@@ -1,77 +1,61 @@
 package edificaciones.biblioteca;
 
+import plataformas.prestamos.Prestable;
+import plataformas.prestamos.materialLectura.Material_de_lectura;
 import utils.Fecha;
 import personas.Persona;
 
-public class Libro {
-    private String titulo;
+public class  Libro extends Material_de_lectura implements Prestable {
     private Persona autor;
-    private int isbn;
-    private int paginas;
+    private int paginasxcap;
     private Editorial editorial;
-    private Fecha fecha;
+    private int capstotales;
 
-    public Libro(String titulo, Persona autor, int isbn, int paginas, Editorial editorial, Fecha fecha){
-        this.titulo = titulo;
+
+    public Libro(String titulo, Fecha fecha, int isbn, Persona autor, int paginasxcap, Editorial editorial) {
+        super(titulo, fecha, isbn);
         this.autor = autor;
-        this.isbn = isbn;
-        this.paginas = paginas;
-        this.editorial = editorial;
-        this.fecha = fecha;
-    }
-    public Libro(String titulo, Persona autor, int isbn, Editorial editorial, Fecha fecha){
-        this.titulo = titulo;
-        this.autor = autor;
-        this.isbn = isbn;
-        this.paginas = -1;
-        this.editorial = editorial;
-        this.fecha = fecha;
-    }
-    public Libro(String titulo, Persona autor, Editorial editorial, Fecha fecha){
-        this.titulo = titulo;
-        this.autor = autor;
-        this.isbn = -1;
-        this.paginas = -1;
-        this.editorial = editorial;
-        this.fecha = fecha;
-    }
-    public void setTitulo(String titulo){
-        this.titulo = titulo;
-    }
-    public void setAutor(Persona autor){
-        this.autor = autor;
-    }
-    public void setIsbn(int isbn){
-        this.isbn = isbn;
-    }
-    public void setPaginas(int paginas){
-        this.paginas = paginas;
-    }
-    public void setEditorial(Editorial editorial){
+        this.paginasxcap = paginasxcap;
         this.editorial = editorial;
     }
-    public void setFecha(Fecha fecha){
-        this.fecha = fecha;
+
+    public Libro(String titulo, Fecha fecha, int isbn, Editorial editorial, int paginasxcap, Persona autor) {
+        super(titulo, fecha, isbn);
+        this.editorial = editorial;
+        this.paginasxcap = -1;
+        this.autor = autor;
     }
-    public String getTitulo(){
-        return titulo;
+
+    public Libro(String titulo, Fecha fecha, int isbn, Persona autor, Editorial editorial, int paginasxcap) {
+        super(titulo, fecha, isbn=-1);
+        this.autor = autor;
+        this.editorial = editorial;
+        this.paginasxcap = -1;
     }
-    public Persona getAutor(){
+
+    public Persona getAutor() {
         return autor;
     }
-    public int getIsbn(){
-        return isbn;
-    }
-    public int getPaginas(){
-        return paginas;
-    }
-    public Editorial getEditorial(){
-        return editorial;
-    }
-    public Fecha getFecha(){
-        return fecha;
+
+    public void setAutor(Persona autor) {
+        this.autor = autor;
     }
 
+    public int getPaginasxcap() {
+        return paginasxcap;
+    }
+
+    public void setPaginasxcap(int paginasxcap) {
+        this.paginasxcap = paginasxcap;
+    }
+
+    public Editorial getEditorial() {
+        return editorial;
+    }
+
+    public void setEditorial(Editorial editorial) {
+        this.editorial = editorial;
+    }
 
     public static void mostrareditoriales(){
         for(Editorial e : Editorial.values()){
@@ -79,16 +63,34 @@ public class Libro {
         }
     }
     public void mostrarLibroCorto(){
-        System.out.printf("Titulo: "+titulo+" Autor: "+autor+" paginas: "+paginas+" editorial: " +editorial.name());
+        System.out.printf("Titulo: "+getTitulo()+" Autor: "+autor+" paginas: "+paginasxcap+" editorial: " +editorial.name());
     }
     public void mostrarLibroLargo(){
-        System.out.printf("Titulo: "+titulo+" Autor: "+autor+" isbn: "+ isbn+" paginas: "+paginas+" editorial: "+editorial.name()+" Fecha: "+fecha.corta());
+        System.out.printf("Titulo: "+getTitulo()+" Autor: "+autor+" isbn: "+ getIsbn()+" paginas: "+paginasxcap+" editorial: "+editorial.name()+" Fecha: "+getFecha().corta());
     }
     public boolean esAnterior(Libro otroLibro){
-        return this.fecha.menorQue(otroLibro.fecha);
+        return this.getFecha().menorQue(otroLibro.getFecha());
     }
 
-    public static void main(String[] args) {
-        //que buen main UwU
+
+
+    @Override
+    public void prestar() {
+        if(puedePrestarse()){
+            System.out.println("el libro se dara prestado");
+        }
+    }
+
+    @Override
+    public boolean puedePrestarse() {
+        if((capstotales/2)!=0){
+           return true;
+        }
+        return false;
+    }
+
+    @Override
+    public void devolver() {
+
     }
 }
