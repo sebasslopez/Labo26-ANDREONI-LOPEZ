@@ -5,32 +5,33 @@ import plataformas.prestamos.materialLectura.Material_de_lectura;
 import utils.Fecha;
 import personas.Persona;
 
+import java.util.HashMap;
+
 public class  Libro extends Material_de_lectura implements Prestable {
     private Persona autor;
-    private int paginasxcap;
+    private HashMap<Integer,Integer>pagsxcap;
     private Editorial editorial;
-    private int capstotales;
 
 
-    public Libro(String titulo, Fecha fecha, int isbn, Persona autor, int paginasxcap, Editorial editorial) {
+
+    public Libro(String titulo, Fecha fecha, int isbn, Persona autor, HashMap paginasxcap, Editorial editorial) {
         super(titulo, fecha, isbn);
         this.autor = autor;
-        this.paginasxcap = paginasxcap;
+        this.pagsxcap = paginasxcap;
         this.editorial = editorial;
     }
 
-    public Libro(String titulo, Fecha fecha, int isbn, Editorial editorial, int paginasxcap, Persona autor) {
+    public Libro(String titulo, Fecha fecha, int isbn, Editorial editorial, Persona autor) {
         super(titulo, fecha, isbn);
         this.editorial = editorial;
-        this.paginasxcap = -1;
         this.autor = autor;
     }
 
-    public Libro(String titulo, Fecha fecha, int isbn, Persona autor, Editorial editorial, int paginasxcap) {
+    public Libro(String titulo, Fecha fecha, int isbn, Persona autor, Editorial editorial) {
         super(titulo, fecha, isbn=-1);
         this.autor = autor;
         this.editorial = editorial;
-        this.paginasxcap = -1;
+
     }
 
     public Persona getAutor() {
@@ -41,12 +42,12 @@ public class  Libro extends Material_de_lectura implements Prestable {
         this.autor = autor;
     }
 
-    public int getPaginasxcap() {
-        return paginasxcap;
+    public HashMap getPagsxcap() {
+        return pagsxcap;
     }
 
-    public void setPaginasxcap(int paginasxcap) {
-        this.paginasxcap = paginasxcap;
+    public void setPaginasxcap(HashMap pagsxcap) {
+        this.pagsxcap = pagsxcap;
     }
 
     public Editorial getEditorial() {
@@ -63,10 +64,10 @@ public class  Libro extends Material_de_lectura implements Prestable {
         }
     }
     public void mostrarLibroCorto(){
-        System.out.printf("Titulo: "+getTitulo()+" Autor: "+autor+" paginas: "+paginasxcap+" editorial: " +editorial.name());
+        System.out.printf("Titulo: "+getTitulo()+" Autor: "+autor+" paginas: "+pagsxcap+" editorial: " +editorial.name());
     }
     public void mostrarLibroLargo(){
-        System.out.printf("Titulo: "+getTitulo()+" Autor: "+autor+" isbn: "+ getIsbn()+" paginas: "+paginasxcap+" editorial: "+editorial.name()+" Fecha: "+getFecha().corta());
+        System.out.printf("Titulo: "+getTitulo()+" Autor: "+autor+" isbn: "+ getIsbn()+" paginas: "+pagsxcap+" editorial: "+editorial.name()+" Fecha: "+getFecha().corta());
     }
     public boolean esAnterior(Libro otroLibro){
         return this.getFecha().menorQue(otroLibro.getFecha());
@@ -83,7 +84,7 @@ public class  Libro extends Material_de_lectura implements Prestable {
 
     @Override
     public boolean puedePrestarse() {
-        if((capstotales/2)!=0){
+       if( (pagsxcap.size()%2)!=0){
            return true;
         }
         return false;
@@ -91,6 +92,11 @@ public class  Libro extends Material_de_lectura implements Prestable {
 
     @Override
     public void devolver() {
+        System.out.println("devolver");
+    }
 
+    @Override
+    public String toString() {
+        return autor+" "+pagsxcap+" "+editorial+" "+pagsxcap+" ";
     }
 }

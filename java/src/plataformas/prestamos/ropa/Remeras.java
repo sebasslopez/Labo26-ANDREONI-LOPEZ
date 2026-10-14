@@ -7,8 +7,8 @@ public class Remeras extends Ropa implements Prestable {
     private int medidascont;
     private int medidaslart;
 
-    public Remeras(String color, Materiales material, String marca, String estado, int medidasesp, int medidascont, int medidaslart) {
-        super(color, material, marca, estado);
+    public Remeras(String color, Materiales material, String marca, boolean dañado, int medidasesp, int medidascont, int medidaslart) {
+        super(color, material, marca, dañado);
         this.medidasesp = medidasesp;
         this.medidascont = medidascont;
         this.medidaslart = medidaslart;
@@ -40,16 +40,26 @@ public class Remeras extends Ropa implements Prestable {
 
     @Override
     public void prestar() {
-
+        if(puedePrestarse()){
+            System.out.println("el objeto se puede prestar");
+        }
     }
 
     @Override
     public boolean puedePrestarse() {
-        return false;
+        if(getDañado()){
+            return false;
+        }
+       return true;
     }
 
     @Override
     public void devolver() {
+        System.out.println("devolver");
+    }
 
+    @Override
+    public String toString() {
+        return medidascont+" " + medidasesp+ " " + medidaslart +"";
     }
 }

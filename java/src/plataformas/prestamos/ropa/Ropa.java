@@ -6,13 +6,13 @@ public abstract class Ropa implements Prestable {
     private String color;
     private Materiales material;
     private String marca;
-    private String estado;
+    private boolean dañado;
 
-    public Ropa(String color, Materiales material, String marca, String estado) {
+    public Ropa(String color, Materiales material, String marca, boolean dañado) {
         this.color = color;
         this.material = material;
         this.marca = marca;
-        this.estado = estado;
+        this.dañado = dañado;
     }
 
     public String getColor() {
@@ -23,12 +23,20 @@ public abstract class Ropa implements Prestable {
         this.color = color;
     }
 
-    public String getEstado() {
-        return estado;
+    public Materiales getMaterial() {
+        return material;
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
+    public void setMaterial(Materiales material) {
+        this.material = material;
+    }
+
+    public boolean getDañado() {
+        return dañado;
+    }
+
+    public void setDañado(boolean dañado) {
+        this.dañado = dañado;
     }
 
     public String getMarca() {
@@ -37,13 +45,5 @@ public abstract class Ropa implements Prestable {
 
     public void setMarca(String marca) {
         this.marca = marca;
-    }
-
-    public Materiales getMaterial() {
-        return material;
-    }
-
-    public void setMaterial(Materiales material) {
-        this.material = material;
     }
 }

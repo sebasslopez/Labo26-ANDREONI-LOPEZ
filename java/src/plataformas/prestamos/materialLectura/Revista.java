@@ -39,6 +39,11 @@ public class Revista extends Material_de_lectura implements Prestable {
 
     @Override
     public void devolver() {
+        System.out.println("devolver");
+    }
 
+    @Override
+    public String toString() {
+        return fechapubli+" ";
     }
 }

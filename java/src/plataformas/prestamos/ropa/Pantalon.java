@@ -7,8 +7,8 @@ public class Pantalon extends Ropa implements Prestable {
     private int medidascad;
     private int medidaslar;
 
-    public Pantalon(String color, Materiales material, String marca, String estado, int medidascad, int medidascin, int medidaslar) {
-        super(color, material, marca, estado);
+    public Pantalon(String color, Materiales material, String marca, boolean dañado, int medidascad, int medidascin, int medidaslar) {
+        super(color, material, marca, dañado);
         this.medidascad = medidascad;
         this.medidascin = medidascin;
         this.medidaslar = medidaslar;
@@ -47,7 +47,7 @@ public class Pantalon extends Ropa implements Prestable {
 
     @Override
     public boolean puedePrestarse() {
-        if(getEstado().equalsIgnoreCase("machado")){
+        if(getDañado()){
             return false;
         }
         return true;
@@ -55,6 +55,11 @@ public class Pantalon extends Ropa implements Prestable {
 
     @Override
     public void devolver() {
+        System.out.println("devolver");
+    }
 
+    @Override
+    public String toString() {
+        return medidascad+" "+medidascin+" "+medidaslar+" ";
     }
 }
