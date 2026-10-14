@@ -23,6 +23,7 @@ public abstract class Empleado extends Persona {
 
     public void setTelefono(String telefono) {
         this.telefono = telefono;
+
     }
 
     public boolean tieneTelefono(String telefono) {
