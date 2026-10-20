@@ -1,6 +1,6 @@
 package personas.empleados;
 
-import empresas.PoliEmpresa.llamada.FranjaHoraria;
+import edificaciones.empresas.PoliEmpresa.llamada.FranjaHoraria;
 
 public class EmpleadoSinAsistencia extends Empleado{
     private String provincia;
