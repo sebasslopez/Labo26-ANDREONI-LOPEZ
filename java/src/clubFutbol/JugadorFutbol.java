@@ -50,4 +50,9 @@ public abstract class JugadorFutbol extends Jugador implements Candidato {
     public void renovar(ClubDeFutbol club) throws NoPuedeRenovarException {
         if(!club.trabajaAhi(this) || this.getEdad() > 35) throw new NoPuedeRenovarException("El jugador no trabaja en el club.");
     }
+
+    @Override
+    public void agregarse(HashSet<IntegranteTecnico> tecnicos, HashSet<JugadorFutbol> jugadores) {
+        jugadores.add(this);
+    }
 }

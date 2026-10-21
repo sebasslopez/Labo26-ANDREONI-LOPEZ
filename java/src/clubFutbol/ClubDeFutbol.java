@@ -43,8 +43,10 @@ public class ClubDeFutbol{
         for(Candidato c : candidatos){
             try {
                 c.contratar(this);
-                if(c instanceof IntegranteTecnico i) tecnicos.add(i);
-                else jugadores.add((JugadorFutbol) c);
+
+                c.agregarse(tecnicos,jugadores);
+                //if(c instanceof IntegranteTecnico i) tecnicos.add(i);
+                //else jugadores.add((JugadorFutbol) c);
                 System.out.println(((Persona) c).getNombreCompleto() + " fue contratado por "+nombre);
             } catch (NoPuedeContratarException e) {
                 System.out.println(e.getMessage());
@@ -71,10 +73,10 @@ public class ClubDeFutbol{
 
     public void informacionPlantel(){
         for(IntegranteTecnico tecnico : tecnicos){
-            System.out.println(tecnico.toString());
+            System.out.println(tecnico);
         }
         for(JugadorFutbol jugador : jugadores){
-            System.out.println(jugador.toString());
+            System.out.println(jugador);
         }
     }
 }

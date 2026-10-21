@@ -50,5 +50,10 @@ public abstract class IntegranteTecnico extends Persona implements Candidato{
     public void renovar(ClubDeFutbol club) throws NoPuedeRenovarException {
         if(!club.trabajaAhi(this)) throw new NoPuedeRenovarException("El tecnico no trabaja en el club.");
     }
+
+    @Override
+    public void agregarse(HashSet<IntegranteTecnico> tecnicos, HashSet<JugadorFutbol> jugadores) {
+        tecnicos.add(this);
+    }
 }
 
