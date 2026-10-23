@@ -14,8 +14,8 @@ public class Mainf{
         Joven j2 =new Joven("juana","duchowny",new Fecha (12,12,2012),"femenino",TipoDeSangre.O_POSITIVO,new HashSet<String>(Set.of("futbol","natacion","acrobacia en tela")));
         Niño n1= new Niño("luca","mateo",new Fecha(1,1,2023),"masculino",TipoDeSangre.AB_POSITIVO,3);
         Niño n2= new Niño("mateo","orgoroso",new Fecha(11,7,2023),"masculino",TipoDeSangre.AB_POSITIVO,6);
-        Adulto a1= new Adulto("franco","andreoni",new Fecha(22,05,1983),"masculino",TipoDeSangre.AB_POSITIVO);
-        Adulto a2= new Adulto("franco","andreoni",new Fecha(22,05,1983),"masculino",TipoDeSangre.AB_POSITIVO);
+        Adulto a1= new Adulto("franco","andreoni",new Fecha(22,5,1983),"masculino",TipoDeSangre.AB_POSITIVO);
+        Adulto a2= new Adulto("franco","andreoni",new Fecha(22,5,1983),"masculino",TipoDeSangre.AB_POSITIVO);
         Geronte g1= new Geronte("edgardo","d",new Fecha(1,2,1950),"m",TipoDeSangre.O_POSITIVO);
         Geronte g2= new Geronte("edgardo","d",new Fecha(1,2,1950),"m",TipoDeSangre.O_POSITIVO);
 

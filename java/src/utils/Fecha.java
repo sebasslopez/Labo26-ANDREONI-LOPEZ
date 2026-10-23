@@ -43,8 +43,8 @@ public class Fecha {
         this.anio = year;
     }
     public void valida(){
-        if(dia > diaMes(mes) || dia <= 0) this.dia= 1;
         if(mes > 12 || mes <= 0) this.mes = 1;
+        if(dia > diaMes(mes) || dia <= 0) this.dia= 1;
         if(anio <= 0) this.anio = 1900;
     }
     public String corta(){

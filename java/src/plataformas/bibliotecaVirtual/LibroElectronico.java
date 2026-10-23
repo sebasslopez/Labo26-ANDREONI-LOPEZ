@@ -12,8 +12,8 @@ public class LibroElectronico extends Libro {
     private String nombreArchivoPdf;
     private int descargasDisponibles;
 
-    public LibroElectronico(String titulo, Autor autor, int isbn, int paginas, Editorial editorial, Fecha fecha, Genero genero, String nombreArchivoPdf){
-        super(titulo, autor, isbn, paginas, editorial, fecha);
+    public LibroElectronico(String titulo, Autor autor, int isbn, Editorial editorial, Fecha fecha, Genero genero, String nombreArchivoPdf){
+        super(titulo,fecha,isbn,editorial,autor);
         this.genero = genero;
         this.nombreArchivoPdf = nombreArchivoPdf;
         this.descargasDisponibles = DESCARGAS_INICIALES;
@@ -21,7 +21,7 @@ public class LibroElectronico extends Libro {
     }
 
     public LibroElectronico(String titulo, Autor autor, Editorial editorial, Fecha fecha, Genero genero, String nombreArchivoPdf){
-        this(titulo, autor, -1, -1, editorial, fecha, genero, nombreArchivoPdf);
+        this(titulo, autor, -1, editorial,fecha,genero,nombreArchivoPdf);
     }
 
     @Override
