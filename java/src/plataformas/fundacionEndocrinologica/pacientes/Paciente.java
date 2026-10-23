@@ -4,7 +4,7 @@ import personas.Persona;
 import plataformas.fundacionEndocrinologica.TipoDeSangre;
 import utils.Fecha;
 
-public class Paciente extends Persona {
+public abstract class Paciente extends Persona {
     private String genero;
     private TipoDeSangre tipodesangre;
 
